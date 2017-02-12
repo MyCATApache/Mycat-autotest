@@ -8,6 +8,8 @@ import java.util.*;
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.Config;
 import io.mycat.db.autotest.dataSource.UseDataSource;
+import io.mycat.db.autotest.utils.DateUtil;
+import org.apache.commons.io.FileUtils;
 
 import javax.sql.DataSource;
 
@@ -27,6 +29,8 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 	private String quartz;
 
 	private String outPath;
+
+	private String today;
 	
 	@FieldType(childName="connection",childType=Connection.class)
 	private List<Connection> connections;
@@ -35,10 +39,19 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 
 	public ProjectConfig() {
 		super(Arrays.asList("path","checkConcurrency","performanceConcurrency","quartz","outPath","connections"),  "projectConfig", Arrays.asList(Connection.class));
+		today = DateUtil.getStrDatebyTobay();
+	}
+
+	public String getToday() {
+		return today;
+	}
+
+	public void setToday(String today) {
+		this.today = today;
 	}
 
 	public String getOutPath() {
-		return outPath;
+		return outPath+"/"+today;
 	}
 
 	public void setOutPath(String outPath) {

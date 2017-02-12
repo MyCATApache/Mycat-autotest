@@ -78,14 +78,16 @@ public class DateUtil {
 		return localDate.toString(dateStr);
 	}
 
+
+
 	/**
-	 * 获得当天的 时间字符串 yyyy-MM-dd HH:mm:ss
-	 * 
+	 * 获得当天的 时间字符串 yyyy-MM-dd
+	 *
 	 * @return
 	 */
 	public static final String getStrDatebyTobay() {
 		DateTime localDate = DateTime.now();
-		return localDate.toString("yyyy-MM-dd HH:mm:ss");
+		return localDate.toString("yyyyMMdd");
 	}
 
 	/**

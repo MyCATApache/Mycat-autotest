@@ -12,12 +12,15 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import io.mycat.db.autotest.server.memory.AutoTestBeanTagsEngine;
 import io.mycat.db.autotest.utils.LogFrameFile;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +38,9 @@ public class AutoTestServer {
 				throw new AutoTestException("解析配置出错");
 			}
 			projectConfig.setOutPath(outPath);
+			String outPathN = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
+			FileUtils.deleteDirectory(new File(outPath));
+			FileUtils.copyDirectoryToDirectory(new File( URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("resources/js").getPath(),"utf-8")),new File(outPathN));
 			projectConfig.initDataSource();
 			BeanFactory.setProjectConfig(projectConfig);
 			List<TestGroupBaseBean> testGroupBaseBeans = BeanFactory.getBeanByClasses(TestGroupBaseBean.class);

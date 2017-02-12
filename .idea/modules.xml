@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dbcheck-check/db-autotest-check.iml" filepath="$PROJECT_DIR$/dbcheck-check/db-autotest-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbcheck-core/db-autotest-core.iml" filepath="$PROJECT_DIR$/dbcheck-core/db-autotest-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/db-autotest-parent.iml" filepath="$PROJECT_DIR$/db-autotest-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbcheck-performance/db-autotest-performance.iml" filepath="$PROJECT_DIR$/dbcheck-performance/db-autotest-performance.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="db-autotest-check:war">
+    <output-path>$PROJECT_DIR$/dbcheck-check/target</output-path>
+    <root id="archive" name="db-autotest-check.war">
+      <element id="artifact" artifact-name="db-autotest-check:war exploded" />
+    </root>
+  </artifact>
+</component>

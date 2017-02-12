@@ -36,13 +36,13 @@
 
                     %>
                     <li class="active show nav-parent">
-                        <a href="javascript:go(this);" ahref="<% print('groupUseCase/'+ testGroupBaseBean.id + '.html'); %>" <% if(flag) { print('style="background-color: #00B83F"'); } else { print('style="background-color: #db2128"'); } %>  ><% if(flag) { print('<i class="icon-check"></i>'); } else { print('<i class="icon-times" ></i>'); } %><% print(testGroupBaseBean.name); %></a><!--class="icon-check"-->
+                        <a href="javascript:void(0);" onclick="go(this)" ahref="<% print('groupUseCase/'+ testGroupBaseBean.id + '.html'); %>" <% if(flag) { print('style="background-color: #00B83F"'); } else { print('style="background-color: #db2128"'); } %>  ><% if(flag) { print('<i class="icon-check"></i>'); } else { print('<i class="icon-times" ></i>'); } %><% print(testGroupBaseBean.name); %></a><!--class="icon-check"-->
                         <ul class="nav">
                             <%
                             for(useCase in useCases){
 
                             %>
-                            <li><a ahref="<% print('groupUseCase/'+ testGroupBaseBean.id+'/'+ useCase.id + '.html'); %>" stauts="<% print(useCase.stauts); %>" href="javascript:go(this);" <% if(useCase.stauts) { print('style="background-color: #00B83F"'); } else { print('style="background-color: #db2128"'); } %>  ><% if(useCase.stauts) { print('<i class="icon-check"></i>'); } else { print('<i class="icon-times" ></i>'); } %><% print(useCase.name); %></a></li>
+                            <li><a ahref="<% print('groupUseCase/'+ testGroupBaseBean.id+'/'+ useCase.id + '.html'); %>" stauts="<% print(useCase.stauts); %>" href="javascript:void(0);" onclick="go(this)" <% if(useCase.stauts) { print('style="background-color: #00B83F"'); } else { print('style="background-color: #db2128"'); } %>  ><% if(useCase.stauts) { print('<i class="icon-check"></i>'); } else { print('<i class="icon-times" ></i>'); } %><% print(useCase.name); %></a></li>
                             <%
                             }
                             %>

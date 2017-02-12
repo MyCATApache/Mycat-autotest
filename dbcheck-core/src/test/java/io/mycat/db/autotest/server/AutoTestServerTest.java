@@ -11,8 +11,8 @@ public class AutoTestServerTest {
 
     @Test
     public void strat() throws Exception {
-        AutoTestServer ats = new AutoTestServer();
-        ats.strat("D:\\user\\Desktop\\基于sql的自动测试系统",true,"./outPath","true");
+       AutoTestServer ats = new AutoTestServer();
+       ats.strat("D:\\user\\Desktop\\基于sql的自动测试系统",true,"./outPath","true");
     }
 
 }

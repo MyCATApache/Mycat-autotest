@@ -8,14 +8,17 @@
 	<name>Archetype - parent</name>
 	<url>http://maven.apache.org</url>
 
-	<modules>
+	<!--<modules>
 		<module>db-autotest-core</module>
 		<module>db-autotest-check</module>
 		<module>db-autotest-performance</module>
-	</modules>
+	</modules>-->
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 		<slf4j.version>1.7.21</slf4j.version>
 		<log4j.version>2.7</log4j.version>
 	</properties>

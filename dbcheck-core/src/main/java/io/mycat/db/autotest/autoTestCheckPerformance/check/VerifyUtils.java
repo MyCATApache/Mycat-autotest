@@ -22,6 +22,7 @@ public class VerifyUtils {
     public static boolean check(Verify verify, UseCase useCase, Connection conn, String sqlStr) throws IOException {
 
         List<Map<String, String>> verifyCheckDatas = null;
+
         switch (verify.getVerifyCheckfileType()) {
             case "excel":// 以excel 模式获取比较数据
                 ExcelReader excelReader = new ExcelReader();
@@ -45,13 +46,26 @@ public class VerifyUtils {
                 dbHelper.close();
             }
         }
-
-        Map<String, Object> datas = new HashMap<>();
-        datas.put("verifyCheckDatas", verifyCheckDatas);
-        datas.put("verifyDatas", verifyDatas);
-        datas.put("verify", verify);
         AutoTestBaseBean stb = BeanFactory.getBeanById(useCase.getParentId());
         String path = "groupUseCase/" + stb.getId() + "/" + useCase.getId() + "/" + verify.getId() + ".html";
+        if(verifyCheckDatas == null || verifyDatas == null){
+            getCheckMsg(verify, useCase, time, new HashMap<>(), path, true);
+            return false;
+        }
+
+        Map<String, Object> datas = new HashMap<>();
+        List<Map<String, String>> verifyCheckDatas2 = new ArrayList<>();
+        for (Map<String, String> verifyCheckData : verifyCheckDatas) {
+            verifyCheckDatas2.add(new TreeMap<>(verifyCheckData));
+        }
+        datas.put("verifyCheckDatas", verifyCheckDatas2);
+        List<Map<String, String>> verifyDatas2 = new ArrayList<>();
+        for (Map<String, String> verifyData : verifyDatas) {
+            verifyDatas2.add(new TreeMap<>(verifyData));
+        }
+        datas.put("verifyDatas", verifyDatas2);
+        datas.put("verify", verify);
+
         if (verify.isVerifyOrder()) {
             //  HashMap
             if (equals(verifyCheckDatas,verifyDatas)) {

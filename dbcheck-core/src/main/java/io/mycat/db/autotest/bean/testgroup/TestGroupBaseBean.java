@@ -182,32 +182,28 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
 
 		if(beforeTestGroup != null){
-			Transaction transaction = beforeTestGroup.getTransaction();
-			transaction.exec();
+			beforeTestGroup.exec();
 		}
 
 		for (UseCase useCase : useCases) {
 
 			if(beforeTest != null){
-				Transaction transaction = beforeTest.getTransaction();
-				transaction.exec();
+				beforeTest.exec();
 			}
 
-			useCase.exec();
+			try{
+				useCase.exec();
 
 
-			if(afterTest != null){
-				Transaction transaction = afterTest.getTransaction();
-				transaction.exec();
+				if(afterTest != null){
+					afterTest.exec();
+				}
+			}finally { // 保证资源清理回收
+				if(afterTestGroup != null){
+					afterTestGroup.exec();
+				}
 			}
-
 		}
-
-		if(afterTestGroup != null){
-			Transaction transaction = afterTestGroup.getTransaction();
-			transaction.exec();
-		}
-
 
 		String path = "groupUseCase/"+this.getId()+".html";
 		Map<String, Object> datas = new HashMap<>();

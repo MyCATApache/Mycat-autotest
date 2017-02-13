@@ -16,19 +16,10 @@ public class TestGroupTransaction extends AutoTestBaseBean implements MultiNameB
 	public TestGroupTransaction() {
 		super(Arrays.asList("transaction"),  "multiName", null);//如果为multiName取父方法的成员变量名
 	}
-	
-	//private Transaction transaction;
 
 	@FieldStep(name={"transaction"})
 	private List<AutoTestBaseBean> fieldStep = new ArrayList<>();
 
-	/*public Transaction getTransaction() {
-		return transaction;
-	}
-
-	public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}*/
 
 	public List<AutoTestBaseBean> getFieldStep() {
 		return fieldStep;

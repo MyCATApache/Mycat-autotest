@@ -64,7 +64,7 @@ public class AutoTestServer {
 				String folder = System.getProperty("java.io.tmpdir");
 				zip.unzip(jarPath,folder+"autotest");
 				FileUtils.copyDirectoryToDirectory(new File( folder+"autotest/resources/js"),new File(outPathN));
-				System.out.println(folder+"autotest/resources/js === 拷贝完成");
+				LogFrameFile.getInstance().debug(folder+"autotest/resources/js === 拷贝完成");
 			}else{
 				FileUtils.copyDirectoryToDirectory(new File( URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("resources/js").getPath(),"utf-8")),new File(outPathN));
 			}

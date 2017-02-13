@@ -19,3 +19,5 @@
 /dbcheck-check/.project
 /dbcheck-check/db-autotest-check.iml
 /dbcheck-core/target
+/outPath
+/dbcheck-check/target

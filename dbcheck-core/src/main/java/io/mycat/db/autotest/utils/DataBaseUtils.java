@@ -18,7 +18,6 @@ public class DataBaseUtils {
     }
 
     public static boolean execSql(Connection conn,String sql) throws SQLException {
-        System.out.println(sql);
         PreparedStatement stat = conn.prepareStatement(sql);
         return stat.execute();
     }

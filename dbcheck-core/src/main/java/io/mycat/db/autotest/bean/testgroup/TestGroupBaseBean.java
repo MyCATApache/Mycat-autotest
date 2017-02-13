@@ -190,7 +190,6 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 			if(beforeTest != null){
 				beforeTest.exec();
 			}
-
 			try{
 				useCase.exec();
 

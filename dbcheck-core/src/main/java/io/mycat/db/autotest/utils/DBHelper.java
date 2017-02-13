@@ -208,7 +208,7 @@ public class DBHelper {
 	 *            SQL语句
 	 * @return List
 	 */
-	public List queryForListMap(String sql) throws SQLException {
+	public List queryForListMap(String sql) throws Exception {
 		return queryForListMap(sql, new Object[] {});
 	}
 
@@ -223,7 +223,7 @@ public class DBHelper {
 	 * @throws SQLException
 	 */
 	public List queryForListMap(String sql, Object[] params)
-			throws SQLException {
+			throws Exception {
 		QueryRunner qr = new QueryRunner();
 		ResultSetHandler rsh = new MapListHandler();
 		return  (List) qr.query(this.conn, sql, params, rsh);

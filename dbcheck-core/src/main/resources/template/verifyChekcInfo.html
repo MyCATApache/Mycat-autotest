@@ -17,9 +17,9 @@
     </script>
 </head>
 <body>
-<a href="javascript:window.history.go(-1)">返回</a>
-<% if(checkMsg.stauts) { print('<i class="icon-check"></i>验证通过'); } else { print('<i class="icon-times" ></i>验证失败'); } %>
-是否全匹配（有序匹配）：<% if(verify.verifyOrder) { print('有序匹配'); } else { print('无序匹配'); } %>
+<a href="javascript:window.history.go(-1)">返回</a><br/>
+<% if(checkMsg.stauts) { print('<i class="icon-check"></i>验证通过'); } else { print('<i class="icon-times" ></i>验证失败'); } %><br/>
+是否全匹配（有序匹配）：<% if(verify.verifyOrder) { print('有序匹配'); } else { print('无序匹配'); } %><br/>
 <h2>需要的数据</h2>
 <table class="table datatable">
     <thead>
@@ -50,9 +50,9 @@
         <%
         for(entry in verifyCheckData){
             var value = entry.value;
-            print(' <th>'+value+'</th>');
+            print(' <t>'+value+'</t>');
         }
-        %>
+        %>d
     </tr>
     <%
     }

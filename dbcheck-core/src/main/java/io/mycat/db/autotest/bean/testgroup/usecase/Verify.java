@@ -35,8 +35,28 @@ public class Verify extends AutoTestBaseBean implements TagServerType {
 
     private String verifyDescription;
 
+    private String verifyExceptionType;
+
+    private String verifyExceptionMsg;
+
     public Verify() {
-        super(Arrays.asList("verifySqlSrc", "verifySql", "verifyConnection", "verifyOrder", "verifyCheckfile", "verifyCheckfileType", "verifyDescription"), "verify", null);
+        super(Arrays.asList("verifySqlSrc", "verifySql", "verifyConnection", "verifyOrder", "verifyCheckfile", "verifyCheckfileType", "verifyDescription","verifyExceptionType","verifyExceptionMsg"), "verify", null);
+    }
+
+    public String getVerifyExceptionMsg() {
+        return verifyExceptionMsg;
+    }
+
+    public void setVerifyExceptionMsg(String verifyExceptionMsg) {
+        this.verifyExceptionMsg = verifyExceptionMsg;
+    }
+
+    public String getVerifyExceptionType() {
+        return verifyExceptionType;
+    }
+
+    public void setVerifyExceptionType(String verifyExceptionType) {
+        this.verifyExceptionType = verifyExceptionType;
     }
 
     public String getVerifySqlSrc() {

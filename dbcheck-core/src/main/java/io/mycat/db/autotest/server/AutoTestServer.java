@@ -7,6 +7,7 @@ import io.mycat.db.autotest.parsing.ParsingAnalysisMain;
 import io.mycat.db.autotest.server.ioc.BeanFactory;
 import io.mycat.db.autotest.utils.BeetlUtils;
 import io.mycat.db.autotest.utils.PathUtils;
+import io.mycat.db.autotest.utils.ZipUtils;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -17,9 +18,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import io.mycat.db.autotest.server.memory.AutoTestBeanTagsEngine;
 import io.mycat.db.autotest.utils.LogFrameFile;
+import sun.rmi.runtime.Log;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +30,21 @@ import java.util.Map;
 
 public class AutoTestServer {
 
+	private boolean isJar = false;
+	private String jarPath = "";
 
+	public AutoTestServer(){
+		URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+		try {
+			String recourseFolder = URLDecoder.decode(url.getPath(), "utf-8");
+			if (recourseFolder.endsWith(".jar")) {
+				isJar = true;
+				jarPath = recourseFolder;
+			}
+		} catch (UnsupportedEncodingException e) {
+			LogFrameFile.getInstance().error("",e);
+		}
+	}
 
 	public void strat(String projectConfigPath, boolean all, String outPath, String s) {
 		try {
@@ -37,10 +54,21 @@ public class AutoTestServer {
 			if(projectConfig == null){
 				throw new AutoTestException("解析配置出错");
 			}
-			projectConfig.setOutPath(outPath);
+			if(StringUtils.isNoneBlank(outPath)){
+				projectConfig.setOutPath(outPath);
+			}
 			String outPathN = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
-			FileUtils.deleteDirectory(new File(outPath));
-			FileUtils.copyDirectoryToDirectory(new File( URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("resources/js").getPath(),"utf-8")),new File(outPathN));
+			FileUtils.deleteDirectory(new File(outPathN));
+			if(isJar){
+				ZipUtils zip = new ZipUtils();
+				String folder = System.getProperty("java.io.tmpdir");
+				zip.unzip(jarPath,folder+"autotest");
+				FileUtils.copyDirectoryToDirectory(new File( folder+"autotest/resources/js"),new File(outPathN));
+				System.out.println(folder+"autotest/resources/js === 拷贝完成");
+			}else{
+				FileUtils.copyDirectoryToDirectory(new File( URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("resources/js").getPath(),"utf-8")),new File(outPathN));
+			}
+
 			projectConfig.initDataSource();
 			BeanFactory.setProjectConfig(projectConfig);
 			List<TestGroupBaseBean> testGroupBaseBeans = BeanFactory.getBeanByClasses(TestGroupBaseBean.class);
@@ -97,13 +125,12 @@ public class AutoTestServer {
 
 	public static void main(String[] args) {
 		Options opt = new Options();
-
-		opt.addOption("p", "path", false, "设置config.xml 的位置");
-		opt.addOption("a","all", false, "默认为true，执行所有的用例");
-		opt.addOption("n","name", false, "执行用例");
-		opt.addOption("outpath", false, "用例输出目录000");
-		opt.addOption("s","server", false, "是否已服务模式启动");
-		String formatstr = "autotest [-p/-path][-a/-all][-n/-name]";
+		opt.addOption("p", "path", true, "设置config.xml 的位置");
+		opt.addOption("a","all", true, "默认为true，执行所有的用例");
+		opt.addOption("n","name", true, "执行用例");
+		opt.addOption("o","outpath", true, "用例输出目录");
+		opt.addOption("s","server", true, "是否已服务模式启动");
+		String formatstr = "autotest [-p/--path][-a/--all][-n/--name][-o/--outpath][-s/--server]";
 
 		HelpFormatter formatter = new HelpFormatter();
 		DefaultParser parser = new DefaultParser();
@@ -124,8 +151,8 @@ public class AutoTestServer {
 		}
 
 		String outpath = null;
-		if (cl.hasOption("outpath")) {
-			outpath = cl.getOptionValue("outpath");
+		if (cl.hasOption("o")) {
+			outpath = cl.getOptionValue("o");
 		}
 
 		String n = null;
@@ -139,8 +166,9 @@ public class AutoTestServer {
 		}
 
 		if(StringUtils.isBlank(projectConfigPath)){
-			
+			System.out.println("无projectConfigPath路径");
 		}else{
+			System.out.println("开始启动");
 			AutoTestServer ats = new AutoTestServer();
 			ats.strat(projectConfigPath,all,outpath,s);
 		}

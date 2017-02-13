@@ -127,7 +127,7 @@ public class AutoTestServer {
 		Options opt = new Options();
 		opt.addOption("p", "path", true, "设置config.xml 的位置");
 		opt.addOption("a","all", true, "默认为true，执行所有的用例");
-		opt.addOption("n","name", true, "执行用例");
+		opt.addOption("n","name", true, "执行用例，多个以,分割");
 		opt.addOption("o","outpath", true, "用例输出目录");
 		opt.addOption("s","server", true, "是否已服务模式启动");
 		String formatstr = "autotest [-p/--path][-a/--all][-n/--name][-o/--outpath][-s/--server]";

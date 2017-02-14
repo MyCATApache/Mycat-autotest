@@ -28,7 +28,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 		super(Arrays.asList("config","beforeTestGroup","afterTestGroup","beforeTest","afterTest"),  "testGroup", null);
 	}
 
-	private Config config;
+	private Config config = new Config();
 	
 	private TestGroupTransaction beforeTestGroup ;
 	
@@ -41,8 +41,6 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 	private List<UseCase> useCases;
 
 	private String path;
-
-	private boolean asyn;
 
 	private String defaultDataSource;
 
@@ -60,12 +58,12 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 	}
 
 	public boolean isAsyn() {
-		return asyn;
+		if(config != null && !config.isSync()){
+			return true;
+		}
+		return false;
 	}
 
-	public void setAsyn(boolean asyn) {
-		this.asyn = asyn;
-	}
 
 	public Map<String, DataSource> getDataSources() {
 		return dataSources;

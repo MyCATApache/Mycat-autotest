@@ -24,9 +24,12 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.rmi.server.ExportException;
+import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class AutoTestServer {
 
@@ -78,8 +81,26 @@ public class AutoTestServer {
 			}
 			LogFrameFile.getInstance().debug("用例装配完成，连接池初始化完成......");
 
-			for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
-				testGroupBaseBean.exec();
+
+			ExecutorService executor = null;
+			try{
+				executor = Executors.newFixedThreadPool(projectConfig.getCheckConcurrency());
+				List<Callable<String>> callables = new ArrayList<>();
+				for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
+					if(testGroupBaseBean.isAsyn()){
+						callables.add(callable(testGroupBaseBean));
+					}else{
+						testGroupBaseBean.exec();
+					}
+				}
+				if(callables.size() > 0){
+					String result = executor.invokeAny(callables);
+					//System.out.println(result);
+				}
+			}finally {
+				if(executor != null){
+					executor.shutdown();
+				}
 			}
 
 			String path = "index.html";
@@ -96,23 +117,18 @@ public class AutoTestServer {
 
 			}
 			LogFrameFile.getInstance().debug("测试完成");
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-			LogFrameFile.getInstance().error("", e);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-			LogFrameFile.getInstance().error("", e);
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-			LogFrameFile.getInstance().error("", e);
 		}catch (Exception e){
-			e.printStackTrace();
-			LogFrameFile.getInstance().error("", e);
-		}catch (Throwable e){
 			e.printStackTrace();
 			LogFrameFile.getInstance().error("", e);
 		}
 
+	}
+
+	Callable<String> callable(TestGroupBaseBean testGroupBaseBean) {
+		return () -> {
+			testGroupBaseBean.exec();
+			return testGroupBaseBean.getId();
+		};
 	}
 
 	private static boolean createHtml(Map<String, Object> datas, String path) throws UnsupportedEncodingException {

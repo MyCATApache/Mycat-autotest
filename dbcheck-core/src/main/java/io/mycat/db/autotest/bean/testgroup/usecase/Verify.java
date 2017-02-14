@@ -152,7 +152,7 @@ public class Verify extends AutoTestBaseBean implements TagServerType {
     }
 
     @Override
-    public boolean exec() throws SQLException {
+    public boolean exec() throws Exception {
 
         Verify sql = this;
         UseCase useCase = sql.getUseCase(null);
@@ -168,13 +168,10 @@ public class Verify extends AutoTestBaseBean implements TagServerType {
             }
 
             return VerifyUtils.check(this,useCase,conn,sqlStr);
-        } catch (IOException e) {
-            LogFrameFile.getInstance().error("", e);
         } finally {
             if (conn != null) {
                 conn.close();
             }
         }
-        return false;
     }
 }

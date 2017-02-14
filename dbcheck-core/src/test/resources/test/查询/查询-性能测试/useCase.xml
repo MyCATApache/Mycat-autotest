@@ -1,0 +1,10 @@
+<useCase>
+	<config defaultDataSource="test" name="queryExample" />
+	<init url="./init.sql" connection="test" />
+	<check>
+		<select verifySqlSrc="./select.sql" verifyConnection="test" verifyOrder="true" verifyCheckfile="./check.xls" verifyDescription="查询错误" />
+	</check>
+	<performance><!-- 性能为独立检查服务，执行多次，显示最高、最低、平均 -->
+		<select url="./select.sql" connection="test" count="10" />
+	</performance>
+</useCase>

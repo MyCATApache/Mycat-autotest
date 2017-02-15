@@ -141,7 +141,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 				if(content != null){
 					sqls = FileSqlUtils.getSqls(content);
 				}else{
-					sqls = FileSqlUtils.getSqls(new File(PathUtils.getPath(useCase.getPath(),sql.getUrl())));
+					sqls = FileSqlUtils.getSqls(new File(PathUtils.getPath(useCase.doPath(),sql.getUrl())));
 				}
 
 				for (String s : sqls) {
@@ -161,7 +161,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 				if(content != null){
 					sqls = FileSqlUtils.getSqls(content);
 				}else{
-					sqls = FileSqlUtils.getSqls(new File(PathUtils.getPath(useCase.getPath(),sql.getUrl())));
+					sqls = FileSqlUtils.getSqls(new File(PathUtils.getPath(useCase.doPath(),sql.getUrl())));
 				}
 
 				long time = 0;

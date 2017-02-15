@@ -164,7 +164,7 @@ public class Verify extends AutoTestBaseBean implements TagServerType {
             if (verifySql != null) {
                 sqlStr = FileSqlUtils.getSqls(verifySql).get(0);
             } else {
-                sqlStr = FileSqlUtils.getSqls(new File( PathUtils.getPath(useCase.getPath(), sql.getVerifySqlSrc()))).get(0);
+                sqlStr = FileSqlUtils.getSqls(new File( PathUtils.getPath(useCase.doPath(), sql.getVerifySqlSrc()))).get(0);
             }
 
             return VerifyUtils.check(this,useCase,conn,sqlStr);

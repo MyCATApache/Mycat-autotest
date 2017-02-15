@@ -26,14 +26,14 @@ public class ParsingProjectParsing {
 
     //projectConfig
 
-    public static String analysis(String path) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException {
+    public static String analysis(String path) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException, NoSuchMethodException {
         Map<String,String> datas = new HashMap<>();
         datas.put("path",path);
        return DefaultXmlAnalysis.analysis(path+"/config.xml","projectConfig",datas);
     }
 
     //projectConfig
-    public static String analysis(File file) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException {
+    public static String analysis(File file) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException, NoSuchMethodException {
         return DefaultXmlAnalysis.analysis(file,"projectConfig");
     }
 

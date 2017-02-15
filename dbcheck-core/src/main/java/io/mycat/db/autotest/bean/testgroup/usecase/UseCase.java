@@ -12,9 +12,11 @@ import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
 import io.mycat.db.autotest.bean.AutoTestBaseBean;
 import io.mycat.db.autotest.bean.AutoTestDataSource;
 import io.mycat.db.autotest.bean.ProjectConfig;
+import io.mycat.db.autotest.bean.UseCaseLocalPath;
 import io.mycat.db.autotest.bean.annotation.FieldStep;
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.Config;
+import io.mycat.db.autotest.bean.testgroup.TestGroupBaseBean;
 import io.mycat.db.autotest.server.ioc.BeanFactory;
 import io.mycat.db.autotest.utils.BeetlUtils;
 import io.mycat.db.autotest.utils.LogFrameFile;
@@ -94,6 +96,14 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
         return path;
     }
 
+    public String doPath() {
+        AutoTestBaseBean autoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
+        if(autoTestBaseBean instanceof TestGroupBaseBean){
+            return ((TestGroupBaseBean) autoTestBaseBean).getPath()+"/"+path;
+        }
+        return "";
+    }
+
     public void setPath(String path) {
         this.path = path;
     }
@@ -154,8 +164,6 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
             }
         }
 
-
-        //AutoTestDataSource，从组里面 取
         AutoTestBaseBean autoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
         if (autoTestBaseBean instanceof AutoTestDataSource) {
             java.sql.Connection conn = ((AutoTestDataSource) autoTestBaseBean).getConnection(name);

@@ -22,20 +22,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 获取配置文件数据核心类
  * xml 核心解析类
  */
 public class DefaultXmlAnalysis {
 
 
-    public static String analysis(String path,String tagName) throws SAXException, IllegalAccessException, IOException, InstantiationException, ParserConfigurationException, InvocationTargetException {
+    public static String analysis(String path,String tagName) throws SAXException, IllegalAccessException, IOException, InstantiationException, ParserConfigurationException, InvocationTargetException, NoSuchMethodException {
        return analysis(new File(path),tagName,new HashMap<>());
     }
 
-    public static String analysis(File file,String tagName) throws SAXException, IllegalAccessException, IOException, InstantiationException, ParserConfigurationException, InvocationTargetException {
+    public static String analysis(File file,String tagName) throws SAXException, IllegalAccessException, IOException, InstantiationException, ParserConfigurationException, InvocationTargetException, NoSuchMethodException {
         return analysis(file,tagName,new HashMap<>());
     }
 
-    public static String analysis(String path,String tagName,Map<String,String> attrs) throws ParserConfigurationException, IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static String analysis(String path,String tagName,Map<String,String> attrs) throws ParserConfigurationException, IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         return analysis(new File(path),tagName,attrs);
     }
 
@@ -52,7 +53,7 @@ public class DefaultXmlAnalysis {
      * @throws InvocationTargetException
      * @throws InstantiationException
      */
-    public static String analysis(File f,String tagName,Map<String,String> attrs) throws ParserConfigurationException, IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static String analysis(File f,String tagName,Map<String,String> attrs) throws ParserConfigurationException, IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(f);
@@ -63,8 +64,8 @@ public class DefaultXmlAnalysis {
 
             Node node = nodelist.item(0);
             Map<String, String> childTags = new HashMap<>();
-            List<Node> childNodes = new ArrayList<>();
-            getNodeData(node, childTags, childNodes);
+            //List<Node> childNodes = new ArrayList<>();
+            getNodeData(node, childTags,null);
             String projectConfigId = AutoTestBeanTagsEngine.analysis(node.getNodeName(), attrs,childTags);
             NodeList nodelistChildNodes = node.getChildNodes();
             if (nodelistChildNodes == null || nodelistChildNodes.getLength() == 0) {
@@ -83,15 +84,21 @@ public class DefaultXmlAnalysis {
             return projectConfigId;
     }
 
+    /**
+     * 获取 当前节点的 属性 和 子标签类型的属性
+     * @param node
+     * @param childTags
+     * @param childNodes
+     */
     private static void getNodeData(Node node, Map<String, String> childTags,  List<Node> childNodes ) {
         NodeList nodelistChildNodes3 = node.getChildNodes();
-        //List<Node> childNodes = new ArrayList<>();
         for (int m = 0; m < nodelistChildNodes3.getLength(); m++) {
             Node nodeLevel3 = nodelistChildNodes3.item(m);
             if (nodeLevel3.getNodeType() == Node.ELEMENT_NODE) {
                 if (!AutoTestBeanTagsEngine.isTag(nodeLevel3.getNodeName())) {
                     boolean flag = true;
                     NodeList nodelistChildNodes4  = nodeLevel3.getChildNodes();
+                    //如过子标签，下无元素标签，就表示当前标签可能是父表的属性
                     for (int n = 0; n < nodelistChildNodes4.getLength(); n++) {
                         if (nodelistChildNodes4.item(n).getNodeType() == Node.ELEMENT_NODE) {
                             flag = false;
@@ -101,13 +108,16 @@ public class DefaultXmlAnalysis {
                         childTags.put(nodeLevel3.getNodeName(), nodeLevel3.getFirstChild().getTextContent());
                     }
                 } else {
-                    childNodes.add(nodeLevel3);
+                    if(childNodes != null){
+                        childNodes.add(nodeLevel3);
+                    }
+
                 }
             }
         }
     }
 
-    private static void getObjSet(String nodeName1, Node nodeLevel1, String id) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+    private static void getObjSet(String nodeName1, Node nodeLevel1, String id) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         // 解析集合类型属性
         if (TypeUtils.isTypeSet(nodeName1)) {
             NodeList nodelistChildNodes2 = nodeLevel1.getChildNodes();
@@ -123,10 +133,11 @@ public class DefaultXmlAnalysis {
         }
     }
 
+    //递归解析标签
     private static void simpleAnalyticObject(String id,
-                                             Node nodeLevel2)throws InstantiationException,
+                                             Node nodeLevel2) throws InstantiationException,
             IllegalAccessException,
-            InvocationTargetException {
+            InvocationTargetException, NoSuchMethodException {
         NamedNodeMap nnm = nodeLevel2.getAttributes();
         Map<String, String> attrs = new HashMap<>();
         attrs.put("parentId", id);
@@ -137,20 +148,7 @@ public class DefaultXmlAnalysis {
         Map<String, String> childTags = new HashMap<>();
         List<Node> childNodes = new ArrayList<>();
         getNodeData(nodeLevel2,childTags,childNodes);
-        /*NodeList nodelistChildNodes3 = nodeLevel2.getChildNodes();
 
-        for (int m = 0; m < nodelistChildNodes3.getLength(); m++) {
-            Node nodeLevel3 = nodelistChildNodes3.item(m);
-            if (nodeLevel3.getNodeType() == Node.ELEMENT_NODE) {
-                if (!AutoTestBeanTagsEngine.isTag(nodeLevel3.getNodeName())) {
-                    if(nodeLevel3.getFirstChild() != null){
-                        childTags.put(nodeLevel3.getNodeName(), nodeLevel3.getFirstChild().getTextContent());
-                    }
-                } else {
-                    childNodes.add(nodeLevel3);
-                }
-            }
-        }*/
         String nid = AutoTestBeanTagsEngine.analysis(nodeLevel2.getNodeName(), attrs, childTags);
         if (!childNodes.isEmpty()) {
             for (Node childNode : childNodes) {

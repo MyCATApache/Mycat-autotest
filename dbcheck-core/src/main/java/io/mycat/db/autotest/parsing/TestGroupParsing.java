@@ -12,12 +12,12 @@ import java.util.Map;
 public class TestGroupParsing {
 
     //projectConfig
-    public static String analysis(String path,String name,String pathDir) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException {
+    public static String analysis(String path,String name,String pathDir) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException, NoSuchMethodException {
         return analysis(new File(path),name,pathDir);
     }
 
     //projectConfig
-    public static String analysis(File file,String name,String pathDir) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException {
+    public static String analysis(File file,String name,String pathDir) throws IllegalAccessException, ParserConfigurationException, IOException, InstantiationException, SAXException, InvocationTargetException, NoSuchMethodException {
         Map<String,String> attrs = new HashMap<>();
         attrs.put("name",name);
         attrs.put("path",pathDir);

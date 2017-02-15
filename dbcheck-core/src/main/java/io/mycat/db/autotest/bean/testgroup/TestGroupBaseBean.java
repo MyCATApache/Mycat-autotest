@@ -11,6 +11,7 @@ import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
 import io.mycat.db.autotest.bean.AutoTestBaseBean;
 import io.mycat.db.autotest.bean.AutoTestDataSource;
 import io.mycat.db.autotest.bean.ProjectConfig;
+import io.mycat.db.autotest.bean.UseCaseLocalPath;
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.usecase.Transaction;
 import io.mycat.db.autotest.bean.testgroup.usecase.UseCase;
@@ -22,7 +23,7 @@ import io.mycat.db.autotest.utils.PathUtils;
 
 import javax.sql.DataSource;
 
-public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataSource ,TagServerType {
+public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataSource ,TagServerType,UseCaseLocalPath {
 	
 	public TestGroupBaseBean() {
 		super(Arrays.asList("config","beforeTestGroup","afterTestGroup","beforeTest","afterTest"),  "testGroup", null);
@@ -40,22 +41,26 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
 	private List<UseCase> useCases;
 
+	private transient List<UseCase> useCaseExecuteComplete;
+
+	private transient List<UseCase> lazyUseCases;
+
 	private String path;
 
-	private String defaultDataSource;
+	//private String defaultDataSource;
 
 	@FieldType(childName="connection",childType= io.mycat.db.autotest.bean.Connection.class)
 	private List<io.mycat.db.autotest.bean.Connection> connections;
 
 	private transient Map<String,DataSource> dataSources = new java.util.concurrent.ConcurrentHashMap<>();
 
-	public String getDefaultDataSource() {
+	/*public String getDefaultDataSource() {
 		return defaultDataSource;
 	}
 
 	public void setDefaultDataSource(String defaultDataSource) {
 		this.defaultDataSource = defaultDataSource;
-	}
+	}*/
 
 	public boolean isAsyn() {
 		if(config != null && !config.isSync()){
@@ -64,6 +69,21 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 		return false;
 	}
 
+	public List<UseCase> getUseCaseExecuteComplete() {
+		return useCaseExecuteComplete;
+	}
+
+	public void setUseCaseExecuteComplete(List<UseCase> useCaseExecuteComplete) {
+		this.useCaseExecuteComplete = useCaseExecuteComplete;
+	}
+
+	public List<UseCase> getLazyUseCases() {
+		return lazyUseCases;
+	}
+
+	public void setLazyUseCases(List<UseCase> lazyUseCases) {
+		this.lazyUseCases = lazyUseCases;
+	}
 
 	public Map<String, DataSource> getDataSources() {
 		return dataSources;

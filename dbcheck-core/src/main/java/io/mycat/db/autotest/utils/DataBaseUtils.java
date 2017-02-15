@@ -22,7 +22,7 @@ public class DataBaseUtils {
         return stat.execute();
     }
 
-    public static boolean rollback(Connection conn){
+   /* public static boolean rollback(Connection conn){
         try {
             conn.rollback();
         } catch (SQLException e) {
@@ -40,5 +40,5 @@ public class DataBaseUtils {
             return false;
         }
         return true;
-    }
+    }*/
 }

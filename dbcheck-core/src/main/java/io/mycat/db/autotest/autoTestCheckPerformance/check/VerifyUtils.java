@@ -65,8 +65,7 @@ public class VerifyUtils {
             switch (verify.getVerifyCheckfileType()) {
                 case "excel":// 以excel 模式获取比较数据
                     ExcelReader excelReader = new ExcelReader();
-                    verifyCheckDatas = excelReader.readExcelContent(new File(PathUtils.getPath(useCase.getPath(), verify.getVerifyCheckfile())));
-
+                    verifyCheckDatas = excelReader.readExcelContent(new File(PathUtils.getPath(useCase.doPath(), verify.getVerifyCheckfile())));
             }
 
             DBHelper dbHelper = null;
@@ -106,7 +105,6 @@ public class VerifyUtils {
             if (verify.isVerifyOrder()) {
                 //  HashMap
                 if (equals(verifyCheckDatas,verifyDatas)) {
-
                     getCheckMsg(verify, useCase, time, datas, path, true,1);
                     return true;
                 }

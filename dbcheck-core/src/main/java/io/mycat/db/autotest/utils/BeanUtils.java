@@ -11,6 +11,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.*;
 
 /**
@@ -26,6 +27,11 @@ public class BeanUtils {
     public static Map<String, Map<String,AutoTestBeanTagsBean>> getAutoTestBeanTagsBeanMaps() {
         return autoTestBeanTagsBeanMaps;
     }
+
+    public static  Map<String,AutoTestBeanTagsBean> getAutoTestBeanTagsBeanMap(String clazz) {
+        return autoTestBeanTagsBeanMaps.get(clazz);
+    }
+
 
    /* public static void addAutoTestBeanTagsBeanMaps(Map<String, List<AutoTestBeanTagsBean>> autoTestBeanTagsBeanMaps) {
         autoTestBeanTagsBeanMaps.putAll(autoTestBeanTagsBeanMaps);
@@ -149,6 +155,9 @@ public class BeanUtils {
 
         Field[] fld = clazz.getDeclaredFields();
         for (Field field : fld) {
+            if(Modifier.isTransient( field.getModifiers())){
+                continue;
+            }
             AutoTestBeanTagsBean autoTestBeanTagsBean = new AutoTestBeanTagsBean();
             FieldStep fieldStep = field.getAnnotation(FieldStep.class);
             FieldType fieldType = field.getAnnotation(FieldType.class);

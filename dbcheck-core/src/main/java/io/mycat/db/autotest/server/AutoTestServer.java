@@ -52,8 +52,11 @@ public class AutoTestServer {
 	public void strat(String projectConfigPath, boolean all, String outPath, String s) {
 		try {
 			AutoTestBeanTagsEngine.loadTagClass();
+
+			// 解析配置文件
 			ParsingAnalysisMain.analysis(projectConfigPath);
 			ProjectConfig projectConfig = BeanFactory.getBeanByClass(ProjectConfig.class);
+
 			if(projectConfig == null){
 				throw new AutoTestException("解析配置出错");
 			}
@@ -87,6 +90,7 @@ public class AutoTestServer {
 				executor = Executors.newFixedThreadPool(projectConfig.getCheckConcurrency());
 				List<Callable<String>> callables = new ArrayList<>();
 				for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
+					// 如果不能异步执行的组，先执行
 					if(testGroupBaseBean.isAsyn()){
 						callables.add(callable(testGroupBaseBean));
 					}else{

@@ -13,7 +13,7 @@ import org.apache.commons.io.FileUtils;
 
 import javax.sql.DataSource;
 
-public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSource{
+public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSource,UseCaseLocalPath{
 	
 	private String path="./";
 	

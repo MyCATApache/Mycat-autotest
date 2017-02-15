@@ -12,7 +12,7 @@ public class AutoTestServerTest {
     @Test
     public void strat() throws Exception {
        AutoTestServer ats = new AutoTestServer();
-       ats.strat(AutoTestServerTest.class.getClassLoader().getResource("test").getFile(),true,"./outPath","true");
+       ats.strat(AutoTestServerTest.class.getClassLoader().getResource("test").getFile(),true,"e://2","true");
     }
 
 }

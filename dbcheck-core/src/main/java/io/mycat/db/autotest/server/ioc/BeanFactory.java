@@ -61,7 +61,7 @@ public class BeanFactory {
 		Collection<AutoTestBaseBean> ls = beans.values();
 		List<AutoTestBaseBean> autoTestBaseBeans = new ArrayList<>();
 		for (AutoTestBaseBean l : ls) {
-			if(clazz.equals(l.getClass())){
+			if(clazz.getName().equals(l.getClass().getName())){
 				autoTestBaseBeans.add(l);
 			}
 		}

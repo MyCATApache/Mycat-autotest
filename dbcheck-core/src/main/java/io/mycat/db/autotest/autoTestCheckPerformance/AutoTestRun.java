@@ -18,8 +18,6 @@ public class AutoTestRun {
     //已完成的性能测试用列
     private static final Collection<String> preformanceFinishs = new java.util.concurrent.ConcurrentLinkedQueue<String>();
 
-
-
     //所有需完成的性能测试列表
     private static final List<String> preformanceList = new ArrayList<>();
 
@@ -46,23 +44,6 @@ public class AutoTestRun {
         checkList.add(check);
     }
 
-    public static void checkRun(String names){
-        try {
-            ProjectConfig pc =  BeanFactory.getProjectConfig();
-            if(names != null){
-                String[] namestrs = names.split(",");
-            }else{
-                Set<TestGroupBaseBean> groupBases = BeanFactory.getGroupBases();
-                for (TestGroupBaseBean groupBasis : groupBases) {
-                    groupBasis.exec();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
 
 }

@@ -339,7 +339,6 @@ public class AutoTestBeanTagsEngine {
                         flag = false;
                         l.getSetMethod().invoke(autoTestBaseBean, autoTestBaseBeanChild);
                     }
-
                 } else {
                     flag = false;
                     l.getSetMethod().invoke(autoTestBaseBean, autoTestBaseBeanChild);

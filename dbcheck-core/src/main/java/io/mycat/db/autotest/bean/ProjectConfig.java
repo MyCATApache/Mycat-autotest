@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.Config;

@@ -200,14 +200,14 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     @Override
     public boolean exec() throws Exception {
-
+        AutoTestBaseBean pAutoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
         for (AutoTestBaseBean autoTestBaseBean : fieldStep) {
-            /*if(type == 1 && autoTestBaseBean instanceof Performance ){
+            if(((TestGroupBaseBean)pAutoTestBaseBean).getType() == 1 && autoTestBaseBean instanceof Performance ){
                 continue;
             }
-            if(type == 2 && autoTestBaseBean instanceof Check ){
+            if(((TestGroupBaseBean)pAutoTestBaseBean).getType() == 2 && autoTestBaseBean instanceof Check ){
                 continue;
-            }*/
+            }
             if(autoTestBaseBean instanceof TagServerType){
                 ((TagServerType)autoTestBaseBean).exec();
             }

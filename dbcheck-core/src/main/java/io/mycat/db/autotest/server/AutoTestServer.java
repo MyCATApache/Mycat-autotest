@@ -90,6 +90,7 @@ public class AutoTestServer {
 				executor = Executors.newFixedThreadPool(projectConfig.getCheckConcurrency());
 				List<Callable<String>> callables = new ArrayList<>();
 				for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
+					testGroupBaseBean.setType(1);
 					// 如果不能异步执行的组，先执行
 					if(testGroupBaseBean.isAsyn()){
 						callables.add(callable(testGroupBaseBean));

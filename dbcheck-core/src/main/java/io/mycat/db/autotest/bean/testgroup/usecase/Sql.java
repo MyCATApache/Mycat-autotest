@@ -49,7 +49,6 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 
 	public Connection getConn(AutoTestDataSource autoTestDataSource) {
 		String conn = getConnection();
-		//UseCase useCase = getUseCase();
 		if(conn == null){
 			if(autoTestDataSource.getConfig() != null){
 				conn = autoTestDataSource.getConfig().getDefualutConnection();

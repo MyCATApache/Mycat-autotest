@@ -31,6 +31,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 服务核心类
+ */
 public class AutoTestServer {
 
 	private boolean isJar = false;
@@ -82,9 +85,9 @@ public class AutoTestServer {
 				testGroupBaseBean.initDataSource();
 				BeanFactory.addGroupBases(testGroupBaseBean);
 			}
-			LogFrameFile.getInstance().debug("用例装配完成，连接池初始化完成......");
+			LogFrameFile.getInstance().error("用例装配完成，连接池初始化完成......");
 
-
+			LogFrameFile.getInstance().error("开始执行验证用例");
 			ExecutorService executor = null;
 			try{
 				executor = Executors.newFixedThreadPool(projectConfig.getCheckConcurrency());
@@ -108,6 +111,8 @@ public class AutoTestServer {
 				}
 			}
 
+
+			LogFrameFile.getInstance().error("开始生成报告");
 			String path = "index.html";
 			Map<String, Object> datas = new HashMap<>();
 			datas.put("testGroupBaseBeans",testGroupBaseBeans);
@@ -116,6 +121,10 @@ public class AutoTestServer {
 			} catch (UnsupportedEncodingException e) {
 				LogFrameFile.getInstance().error("",e);
 			}
+			for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
+				testGroupBaseBean.createHtml();
+			}
+
 
 			// 是否启动定时器
 			if(Boolean.valueOf(s)){

@@ -11,10 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
-import io.mycat.db.autotest.bean.AutoTestBaseBean;
-import io.mycat.db.autotest.bean.AutoTestDataSource;
-import io.mycat.db.autotest.bean.ProjectConfig;
-import io.mycat.db.autotest.bean.UseCaseLocalPath;
+import io.mycat.db.autotest.bean.*;
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.usecase.Transaction;
 import io.mycat.db.autotest.bean.testgroup.usecase.UseCase;
@@ -28,7 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.sql.DataSource;
 
-public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataSource, TagServerType, UseCaseLocalPath {
+public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataSource, TagServerType, UseCaseLocalPath,CreateHtmlExec {
 
     public TestGroupBaseBean() {
         super(Arrays.asList("config", "beforeTestGroup", "afterTestGroup", "beforeTest", "afterTest"), "testGroup", null);
@@ -231,7 +228,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
                         continue;
                     }
                     //当前只有支持异步执行且不依赖别的用例的用例才能异步执行
-                    if(useCase.isAsyn()){
+                    if(useCase.isAsyn() && this.getType() == 1){
                         callables.add(callable(useCase));
                     }else{
 
@@ -299,15 +296,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
             }
         }*/
 
-        String path = "groupUseCase/" + this.getId() + ".html";
-        Map<String, Object> datas = new HashMap<>();
-        datas.put("useCases", useCases);
-        datas.put("groupUseCase", this);
-        try {
-            createHtml(datas, path);
-        } catch (UnsupportedEncodingException e) {
-            LogFrameFile.getInstance().error("", e);
-        }
+
 
         return true;
     }
@@ -351,5 +340,26 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
         String templateid = "groupUseCase.html";
         BeetlUtils.createpathTemplate(outPath + "/" + path, templateid, datas);
         return true;
+    }
+
+    @Override
+    public boolean createHtml() {
+        String path = "groupUseCase/" + this.getId() + ".html";
+        Map<String, Object> datas = new HashMap<>();
+        datas.put("useCases", useCases);
+        datas.put("groupUseCase", this);
+        try {
+            createHtml(datas, path);
+        } catch (UnsupportedEncodingException e) {
+            LogFrameFile.getInstance().error("", e);
+            return false;
+        }
+        boolean flag = true;
+        for (UseCase useCase : useCases) {
+            if(!useCase.createHtml()){
+                flag = false;
+            }
+        }
+        return flag;
     }
 }

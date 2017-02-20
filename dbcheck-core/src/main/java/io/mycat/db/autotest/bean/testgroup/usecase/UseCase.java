@@ -9,10 +9,7 @@ import java.util.*;
 import io.mycat.db.autotest.autoTestCheckPerformance.check.vo.CheckMsg;
 import io.mycat.db.autotest.autoTestCheckPerformance.performance.vo.PerfromanceMsg;
 import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
-import io.mycat.db.autotest.bean.AutoTestBaseBean;
-import io.mycat.db.autotest.bean.AutoTestDataSource;
-import io.mycat.db.autotest.bean.ProjectConfig;
-import io.mycat.db.autotest.bean.UseCaseLocalPath;
+import io.mycat.db.autotest.bean.*;
 import io.mycat.db.autotest.bean.annotation.FieldStep;
 import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.Config;
@@ -23,7 +20,7 @@ import io.mycat.db.autotest.utils.LogFrameFile;
 import io.mycat.db.autotest.utils.PathUtils;
 
 
-public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, TagServerType {
+public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, TagServerType,CreateHtmlExec {
 
 
     public UseCase() {
@@ -212,15 +209,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
                 ((TagServerType)autoTestBaseBean).exec();
             }
         }
-        AutoTestBaseBean stb = BeanFactory.getBeanById(this.getParentId());
-        String path = "groupUseCase/"+stb.getId()+"/"+this.getId()+".html";
-        Map<String, Object> datas = new HashMap<>();
-        datas.put("useCase",this);
-        try {
-            createHtml(datas,path);
-        } catch (UnsupportedEncodingException e) {
-            LogFrameFile.getInstance().error("",e);
-        }
+
         return true;
     }
 
@@ -229,6 +218,21 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
         String outPath = PathUtils.getPath(projectConfig.getPath(),projectConfig.getOutPath());
         String templateid = "useCase.html";
         BeetlUtils.createpathTemplate(outPath + "/" + path,templateid,datas);
+        return true;
+    }
+
+    @Override
+    public boolean createHtml() {
+        AutoTestBaseBean stb = BeanFactory.getBeanById(this.getParentId());
+        String path = "groupUseCase/"+stb.getId()+"/"+this.getId()+".html";
+        Map<String, Object> datas = new HashMap<>();
+        datas.put("useCase",this);
+        try {
+            createHtml(datas,path);
+        } catch (UnsupportedEncodingException e) {
+            LogFrameFile.getInstance().error("",e);
+            return false;
+        }
         return true;
     }
 }

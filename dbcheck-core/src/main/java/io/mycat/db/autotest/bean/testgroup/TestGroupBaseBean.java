@@ -353,7 +353,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
         boolean flag = true;
         List<UseCase> cUseCases = new ArrayList<>();
         for (UseCase useCase : useCases) {
-            if(!useCase.isCreateHtml()){
+            if(!useCase.isStautsCreateHtml()){
                 continue;
             }
             if(!useCase.createHtml()){

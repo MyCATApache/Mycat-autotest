@@ -44,18 +44,18 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     private boolean stauts = true;
 
-    private boolean createHtml = true;
+    private boolean stautsCreateHtml = true;
 
     private transient List<CheckMsg> checks = new ArrayList<>();
 
     private transient List<PerfromanceMsg> perfromances = new ArrayList<>();
 
-    public boolean isCreateHtml() {
-        return createHtml;
+    public boolean isStautsCreateHtml() {
+        return stautsCreateHtml;
     }
 
-    public void setCreateHtml(boolean createHtml) {
-        this.createHtml = createHtml;
+    public void setStautsCreateHtml(boolean stautsCreateHtml) {
+        this.stautsCreateHtml = stautsCreateHtml;
     }
 
     public void setChecks(List<CheckMsg> checks) {
@@ -210,7 +210,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
         AutoTestBaseBean pAutoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
         if(!AutoTestRunStatus.getUseCaseList().isEmpty() && !AutoTestRunStatus.isUseCaseList(this.getId())){
             if(!AutoTestRunStatus.isUseCaseList(pAutoTestBaseBean.getId())){
-                this.setCreateHtml(false);
+                this.setStautsCreateHtml(false);
                 LogFrameFile.getInstance().debug("用例id="+this.getId()+"   , name="+this.getName()+"被忽略");
                 return true;
             }
@@ -241,7 +241,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     @Override
     public boolean createHtml() {
-        if(!this.isCreateHtml()){
+        if(!this.isStautsCreateHtml()){
             return true;
         }
         AutoTestBaseBean stb = BeanFactory.getBeanById(this.getParentId());

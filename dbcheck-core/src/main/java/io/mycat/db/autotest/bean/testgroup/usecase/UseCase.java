@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
 
+import io.mycat.db.autotest.autoTestCheckPerformance.AutoTestRunStatus;
 import io.mycat.db.autotest.autoTestCheckPerformance.check.vo.CheckMsg;
 import io.mycat.db.autotest.autoTestCheckPerformance.performance.vo.PerfromanceMsg;
 import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
@@ -43,10 +44,19 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     private boolean stauts = true;
 
+    private boolean createHtml = true;
+
     private transient List<CheckMsg> checks = new ArrayList<>();
 
     private transient List<PerfromanceMsg> perfromances = new ArrayList<>();
 
+    public boolean isCreateHtml() {
+        return createHtml;
+    }
+
+    public void setCreateHtml(boolean createHtml) {
+        this.createHtml = createHtml;
+    }
 
     public void setChecks(List<CheckMsg> checks) {
         this.checks = checks;
@@ -198,6 +208,13 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
     @Override
     public boolean exec() throws Exception {
         AutoTestBaseBean pAutoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
+        if(!AutoTestRunStatus.getUseCaseList().isEmpty() && !AutoTestRunStatus.isUseCaseList(this.getId())){
+            if(!AutoTestRunStatus.isUseCaseList(pAutoTestBaseBean.getId())){
+                this.setCreateHtml(false);
+                LogFrameFile.getInstance().debug("用例id="+this.getId()+"   , name="+this.getName()+"被忽略");
+                return true;
+            }
+        }
         for (AutoTestBaseBean autoTestBaseBean : fieldStep) {
             if(((TestGroupBaseBean)pAutoTestBaseBean).getType() == 1 && autoTestBaseBean instanceof Performance ){
                 continue;
@@ -206,6 +223,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
                 continue;
             }
             if(autoTestBaseBean instanceof TagServerType){
+
                 ((TagServerType)autoTestBaseBean).exec();
             }
         }
@@ -223,6 +241,9 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     @Override
     public boolean createHtml() {
+        if(!this.isCreateHtml()){
+            return true;
+        }
         AutoTestBaseBean stb = BeanFactory.getBeanById(this.getParentId());
         String path = "groupUseCase/"+stb.getId()+"/"+this.getId()+".html";
         Map<String, Object> datas = new HashMap<>();

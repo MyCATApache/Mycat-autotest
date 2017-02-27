@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="error">
+<Configuration status="debug">
 
 	<properties>
 		<property name="logPath">log</property>
@@ -30,12 +30,13 @@
 	</Appenders>
 
 	<Loggers>
-		<Root level="error">
+		<Root level="debug">
 			<AppenderRef ref="RollingFile" />
 		</Root>
 
-		<Logger name="io.mycat.db.autotest.utils.LogFrameFile" level="error"
+		<Logger name="io.mycat.db.autotest.utils.LogFrameFile" level="debug"
 			additivity="true">
+			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFileLog4j" />
 		</Logger>
 	</Loggers>

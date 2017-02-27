@@ -1,4 +1,5 @@
 <useCase>
+	<id>queryExample</id>
 	<config defaultDataSource="test" name="queryExample" />
 	<init url="./init.sql" connection="test" />
 	<check>

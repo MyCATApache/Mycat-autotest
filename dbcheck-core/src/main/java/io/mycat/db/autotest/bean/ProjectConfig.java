@@ -10,6 +10,7 @@ import io.mycat.db.autotest.bean.annotation.FieldType;
 import io.mycat.db.autotest.bean.testgroup.Config;
 import io.mycat.db.autotest.dataSource.UseDataSource;
 import io.mycat.db.autotest.utils.DateUtil;
+import io.mycat.db.autotest.utils.LogFrameFile;
 import org.apache.commons.io.FileUtils;
 
 import javax.sql.DataSource;
@@ -32,6 +33,8 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 	private String outPath;
 
 	private String today;
+
+	private String performanceExec = "io.mycat.db.autotest.autoTestCheckPerformance.performance.exec.DefaultPerformanceExec";
 	
 	@FieldType(childName="connection",childType=Connection.class)
 	private List<Connection> connections;
@@ -115,6 +118,13 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 		this.performanceType = performanceType;
 	}
 
+	public String getPerformanceExec() {
+		return performanceExec;
+	}
+
+	public void setPerformanceExec(String performanceExec) {
+		this.performanceExec = performanceExec;
+	}
 
 	@Override
 	public void initDataSource() {
@@ -146,7 +156,7 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 			try {
 				((Closeable)dataSource).close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				LogFrameFile.getInstance().error("",e);
 			}
 		}
 	}

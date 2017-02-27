@@ -10,6 +10,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.mycat.db.autotest.autoTestCheckPerformance.AutoTestRunStatus;
 import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
 import io.mycat.db.autotest.bean.*;
 import io.mycat.db.autotest.bean.annotation.FieldType;
@@ -196,7 +197,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
             try {
                 ((Closeable) dataSource).close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LogFrameFile.getInstance().error("",e);
             }
         }
     }
@@ -222,11 +223,13 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
             try {
                 for (UseCase useCase : useCases) {
+
                     String id = useCase.getDepend();
                     if(StringUtils.isNotEmpty(id) && !useCaseExecuteComplete.contains(id)){
                         lazyUseCases.add(useCase);
                         continue;
                     }
+
                     //当前只有支持异步执行且不依赖别的用例的用例才能异步执行
                     if(useCase.isAsyn() && this.getType() == 1){
                         callables.add(callable(useCase));
@@ -346,19 +349,26 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
     public boolean createHtml() {
         String path = "groupUseCase/" + this.getId() + ".html";
         Map<String, Object> datas = new HashMap<>();
-        datas.put("useCases", useCases);
+
+        boolean flag = true;
+        List<UseCase> cUseCases = new ArrayList<>();
+        for (UseCase useCase : useCases) {
+            if(!useCase.isCreateHtml()){
+                continue;
+            }
+            if(!useCase.createHtml()){
+                flag = false;
+                continue;
+            }
+            cUseCases.add(useCase);
+        }
+        datas.put("useCases", cUseCases);
         datas.put("groupUseCase", this);
         try {
             createHtml(datas, path);
         } catch (UnsupportedEncodingException e) {
             LogFrameFile.getInstance().error("", e);
             return false;
-        }
-        boolean flag = true;
-        for (UseCase useCase : useCases) {
-            if(!useCase.createHtml()){
-                flag = false;
-            }
         }
         return flag;
     }

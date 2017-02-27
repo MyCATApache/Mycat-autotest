@@ -2,6 +2,7 @@ package io.mycat.db.autotest.dataSource.factory;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import io.mycat.db.autotest.bean.Connection;
+import io.mycat.db.autotest.utils.LogFrameFile;
 
 /**
  * Created by qiank on 2017/1/25.
@@ -16,9 +17,12 @@ public class DruidDataSourceFactory {
 
         DruidDataSource ds = new DruidDataSource();
 
+        ds.setName(conn.getName());
         ds.setUrl(url);
         ds.setUsername(conn.getUsername());
         ds.setPassword(conn.getPassword());
+
+        LogFrameFile.getInstance().debug("初始化完成连接池："+ds.toString());
 
         return ds;
         /*if (driverClass != null)

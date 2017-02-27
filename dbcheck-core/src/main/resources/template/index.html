@@ -40,10 +40,12 @@
                         <ul class="nav">
                             <%
                             for(useCase in useCases){
-
+                                if(!useCase.createHtml){
+                                    continue;
                             %>
                             <li><a ahref="<% print('groupUseCase/'+ testGroupBaseBean.id+'/'+ useCase.id + '.html'); %>" stauts="<% print(useCase.stauts); %>" href="javascript:void(0);" onclick="go(this)" <% if(useCase.stauts) { print('style="background-color: #00B83F"'); } else { print('style="background-color: #db2128"'); } %>  ><% if(useCase.stauts) { print('<i class="icon-check"></i>'); } else { print('<i class="icon-times" ></i>'); } %><% print(useCase.name); %></a></li>
                             <%
+                                }
                             }
                             %>
                         </ul>

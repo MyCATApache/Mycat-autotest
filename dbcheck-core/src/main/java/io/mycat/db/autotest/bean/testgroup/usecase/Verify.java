@@ -29,9 +29,9 @@ public class Verify extends AutoTestBaseBean implements TagServerType {
 
     private boolean verifyOrder = true;
 
-    private String verifyCheckfile = "check.xlsx";
+    private String verifyCheckfile = "check.xml";
 
-    private String verifyCheckfileType = "excel";
+    private String verifyCheckfileType = "xml";
 
     private String verifyDescription;
 

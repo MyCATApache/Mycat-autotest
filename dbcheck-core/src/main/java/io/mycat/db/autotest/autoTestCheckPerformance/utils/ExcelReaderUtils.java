@@ -1,4 +1,4 @@
-package io.mycat.db.autotest.utils;
+package io.mycat.db.autotest.autoTestCheckPerformance.utils;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Cell;
 /**
  * 操作Excel表格的功能类
  */
-public class ExcelReader {
+public class ExcelReaderUtils {
     /**
      * 读取Excel表格表头的内容
      *

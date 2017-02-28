@@ -1,6 +1,8 @@
 package io.mycat.db.autotest.autoTestCheckPerformance.check;
 
 import io.mycat.db.autotest.autoTestCheckPerformance.check.vo.CheckMsg;
+import io.mycat.db.autotest.autoTestCheckPerformance.utils.ExcelReaderUtils;
+import io.mycat.db.autotest.autoTestCheckPerformance.utils.XmlUtils;
 import io.mycat.db.autotest.bean.AutoTestBaseBean;
 import io.mycat.db.autotest.bean.ProjectConfig;
 import io.mycat.db.autotest.bean.testgroup.usecase.UseCase;
@@ -11,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -64,8 +65,10 @@ public class VerifyUtils {
 
             switch (verify.getVerifyCheckfileType()) {
                 case "excel":// 以excel 模式获取比较数据
-                    ExcelReader excelReader = new ExcelReader();
+                    ExcelReaderUtils excelReader = new ExcelReaderUtils();
                     verifyCheckDatas = excelReader.readExcelContent(new File(PathUtils.getPath(useCase.doPath(), verify.getVerifyCheckfile())));
+                case "xml":// 以xml 模式获取比较数据
+                    verifyCheckDatas = XmlUtils.readXmlContent(new File(PathUtils.getPath(useCase.doPath(), verify.getVerifyCheckfile())));
             }
 
             DBHelper dbHelper = null;
@@ -146,8 +149,6 @@ public class VerifyUtils {
         }
         return true;
     }
-
-
 
     private static void getCheckMsg(Verify verify, UseCase useCase, long time, Map<String, Object> datas, String path, boolean stauts,int type) {
         CheckMsg cm = new CheckMsg(verify.getId(), verify.getName(), "", path, time, stauts);

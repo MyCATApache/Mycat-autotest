@@ -1,1 +1,0 @@
-select * from test order by cast(test_id as unsigned int);

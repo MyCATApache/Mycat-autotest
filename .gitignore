@@ -21,3 +21,16 @@
 /dbcheck-core/target
 /outPath
 /dbcheck-check/target
+/db-autotest-core/log
+/db-autotest-core/target
+/db-autotest-core/.classpath
+/db-autotest-core/.project
+/db-autotest-core/db-autotest-core.iml
+/db-autotest-core/dependency-reduced-pom.xml
+/db-autotest-core/mapdbCache.db
+/db-autotest-core/.settings
+/db-autotest-performance/.settings
+/db-autotest-performance/target
+/db-autotest-performance/.classpath
+/db-autotest-performance/.project
+/db-autotest-performance/db-autotest-performance.iml

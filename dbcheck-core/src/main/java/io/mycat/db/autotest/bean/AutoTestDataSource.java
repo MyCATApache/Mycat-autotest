@@ -7,11 +7,13 @@ import java.sql.SQLException;
 /**
  * Created by qiank on 2017/1/25.
  */
-public interface AutoTestDataSource extends AutoCloseable{
+public interface AutoTestDataSource {
 
     void initDataSource();
 
     Config getConfig();
 
     java.sql.Connection getConnection(String name) throws SQLException;
+
+    public void close() throws Exception;
 }

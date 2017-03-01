@@ -32,7 +32,7 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 
 	private String outPath;
 
-	private String today;
+	private String todayTime;
 
 	private String performanceExec = "io.mycat.db.autotest.autoTestCheckPerformance.performance.exec.DefaultPerformanceExec";
 	
@@ -43,19 +43,19 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 
 	public ProjectConfig() {
 		super(Arrays.asList("path","checkConcurrency","performanceConcurrency","quartz","outPath","connections"),  "projectConfig", Arrays.asList(Connection.class));
-		today = DateUtil.getStrDatebyTobay();
+		todayTime = DateUtil.getStrDatebyTobayTime();
 	}
 
-	public String getToday() {
-		return today;
+	public String getTodayTime() {
+		return todayTime;
 	}
 
-	public void setToday(String today) {
-		this.today = today;
+	public void setTodayTime(String todayTime) {
+		this.todayTime = todayTime;
 	}
 
 	public String getOutPath() {
-		return outPath+"/"+today;
+		return outPath+"/"+todayTime;
 	}
 
 	public void setOutPath(String outPath) {
@@ -128,6 +128,9 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 
 	@Override
 	public void initDataSource() {
+		if(dataSources == null){
+			dataSources = new java.util.concurrent.ConcurrentHashMap<>();
+		}
 		if(connections != null){
 			for (Connection connection : connections) {
 				dataSources.put(connection.getId(),UseDataSource.getDataSource(connection));
@@ -157,6 +160,7 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 				((Closeable)dataSource).close();
 			} catch (IOException e) {
 				LogFrameFile.getInstance().error("",e);
+				throw e;
 			}
 		}
 	}

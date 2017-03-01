@@ -24,12 +24,12 @@ import java.util.List;
  */
 public class ParsingAnalysisMain {
 
-    private static List<File> getFiles(String path) throws UnsupportedEncodingException {
+    public static List<File> getFiles(String path) throws UnsupportedEncodingException {
         File file = new File(path);
         return getFiles(file);
     }
 
-    private static List<File> getFiles(File file) throws UnsupportedEncodingException {
+    public static List<File> getFiles(File file) throws UnsupportedEncodingException {
         File[] files = file.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {

@@ -92,6 +92,16 @@ public class DateUtil {
 
 	/**
 	 * 获得当天的 时间字符串 yyyy-MM-dd
+	 *
+	 * @return
+	 */
+	public static final String getStrDatebyTobayTime() {
+		DateTime localDate = DateTime.now();
+		return localDate.toString("yyyyMMddHHmmss");
+	}
+
+	/**
+	 * 获得当天的 时间字符串 yyyy-MM-dd
 	 * 
 	 * @return
 	 */

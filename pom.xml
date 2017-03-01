@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.mycat</groupId>
 	<artifactId>db-autotest-parent</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.1</version>
 	<packaging>pom</packaging>
 	<name>Archetype - parent</name>
 	<url>http://maven.apache.org</url>
@@ -15,6 +15,7 @@
 	</modules>-->
 	
 	<properties>
+		<project.build.version>0.1.1</project.build.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>

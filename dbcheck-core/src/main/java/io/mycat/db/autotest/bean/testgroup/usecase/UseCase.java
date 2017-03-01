@@ -46,9 +46,9 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     private boolean stautsCreateHtml = true;
 
-    private transient List<CheckMsg> checks = new ArrayList<>();
+    private List<CheckMsg> checks = new java.util.concurrent.CopyOnWriteArrayList<>();
 
-    private transient List<PerfromanceMsg> perfromances = new ArrayList<>();
+    private List<PerfromanceMsg> perfromances = new java.util.concurrent.CopyOnWriteArrayList<>();
 
     public boolean isStautsCreateHtml() {
         return stautsCreateHtml;
@@ -207,7 +207,16 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
 
     @Override
     public boolean exec() throws Exception {
+
+
+
         AutoTestBaseBean pAutoTestBaseBean = BeanFactory.getBeanById(this.getParentId());
+        if(((TestGroupBaseBean)pAutoTestBaseBean).getType() == 1){
+            checks = new java.util.concurrent.CopyOnWriteArrayList<>();
+            perfromances = new java.util.concurrent.CopyOnWriteArrayList<>();
+        }
+
+
         if(!AutoTestRunStatus.getUseCaseList().isEmpty() && !AutoTestRunStatus.isUseCaseList(this.getId())){
             if(!AutoTestRunStatus.isUseCaseList(pAutoTestBaseBean.getId())){
                 this.setStautsCreateHtml(false);

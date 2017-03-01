@@ -45,4 +45,13 @@ public class AutoTestRunStatus {
     public static List<String> getUseCaseList() {
         return useCaseList;
     }
+
+
+    public static void clearUseCaseAlls() {
+        useCaseAlls.clear();
+    }
+
+    public static void clearUseCaseList() {
+        useCaseList.clear();
+    }
 }

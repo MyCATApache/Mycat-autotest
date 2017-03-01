@@ -20,7 +20,7 @@ public class BeanFactory {
 	/**
 	 * 延迟对象缓存
 	 */
-	private static final Set< AutoTestBaseBean> deferreds = new java.util.concurrent.ConcurrentSkipListSet<>();
+	//private static final Set< AutoTestBaseBean> deferreds = new java.util.concurrent.ConcurrentSkipListSet<>();
 
 	/**
 	 * 用例组，缓存
@@ -53,6 +53,14 @@ public class BeanFactory {
 		return groupBases;
 	}
 
+	public static void clearGroupBases() {
+		groupBases.clear();
+	}
+
+	public static void clearBases() {
+		beans.clear();
+	}
+
 	public static void addGroupBases(TestGroupBaseBean tgb) {
 		groupBases.add(tgb);
 	}
@@ -78,13 +86,13 @@ public class BeanFactory {
 		return null;
 	}
 
-	public static Set< AutoTestBaseBean> getDeferreds() {
+	/*public static Set< AutoTestBaseBean> getDeferreds() {
 		return deferreds;
 	}
 
 	public static void addDeferred(AutoTestBaseBean autoTestBaseBean){
 		deferreds.add(autoTestBaseBean);
-	}
+	}*/
 
 
 }

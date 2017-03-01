@@ -50,7 +50,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
     private String path;
 
-    private transient int type = 1;
+    private int type = 1;
 
     //private String defaultDataSource;
 
@@ -172,6 +172,9 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
     @Override
     public void initDataSource() {
+        if(dataSources == null){
+            dataSources = new java.util.concurrent.ConcurrentHashMap<>();
+        }
         if (connections != null) {
             for (io.mycat.db.autotest.bean.Connection connection : connections) {
                 dataSources.put(connection.getId(), UseDataSource.getDataSource(connection));
@@ -204,6 +207,10 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
 
     @Override
     public boolean exec() throws Exception {
+
+        useCaseExecuteComplete = new ArrayList<>();
+        lazyUseCases  = new ArrayList<>();
+
         TestGroupBaseBean tgbb = this;
         TestGroupTransaction afterTestGroup = tgbb.getAfterTestGroup();
         TestGroupTransaction beforeTestGroup = tgbb.getBeforeTestGroup();

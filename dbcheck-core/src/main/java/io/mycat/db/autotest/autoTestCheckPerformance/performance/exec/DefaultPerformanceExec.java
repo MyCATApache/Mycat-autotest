@@ -20,7 +20,12 @@ public class DefaultPerformanceExec implements PerformanceExec {
     public boolean exec() throws Exception {
         for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
             testGroupBaseBean.setType(2);
-            testGroupBaseBean.exec();
+            try{
+                testGroupBaseBean.initDataSource();
+                testGroupBaseBean.exec();
+            }finally {
+                testGroupBaseBean.close();
+            }
         }
         return true;
     }

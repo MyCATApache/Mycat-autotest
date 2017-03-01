@@ -1,7 +1,0 @@
-<useCase>
-	<config name="queryExample" defualutConnection="A" />
-	<init  /><!-- src="init.sql" 不配置src默认使用init.sql 不配置链接使用本用例默认链接使用A -->
-	<check> <!--  -->
-		<select  verifyDescription="查询错误" /> <!-- verifySql="select.sql" verifyConnection="A" verifyOrder="true" verifyCheckfile="check.xlsx" -->
-	</check>
-</useCase>

@@ -8,11 +8,10 @@
 	<name>Archetype - parent</name>
 	<url>http://maven.apache.org</url>
 
-	<!--<modules>
-		<module>db-autotest-core</module>
-		<module>db-autotest-check</module>
+	<modules>
 		<module>db-autotest-performance</module>
-	</modules>-->
+		<module>db-autotest-core</module>
+	</modules>
 	
 	<properties>
 		<project.build.version>0.1.1</project.build.version>

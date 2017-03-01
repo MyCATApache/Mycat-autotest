@@ -1,0 +1,173 @@
+2017-02-13 12:22:29 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:22:30 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:22:30 [main] ERROR LogFrameFile:30 - 
+java.lang.NullPointerException: null
+	at java.io.File.<init>(File.java:277) ~[?:1.8.0_121]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:42) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:146) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:25:04 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:25:05 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:25:05 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:148) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:26:23 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:26:24 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:26:24 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:28:26 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:28:26 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:28:26 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:29:20 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:29:21 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:29:21 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:30:10 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:30:11 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:30:11 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:30:27 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:30:27 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:30:28 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:32:02 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:32:02 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:32:02 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:152) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:32:19 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:32:20 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:32:20 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:153) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:33:09 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:33:09 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:33:09 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:153) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:35:18 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:35:19 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:35:19 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:153) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:36:17 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:36:17 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:36:17 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:156) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:37:40 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:37:41 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:37:41 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:156) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:38:18 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:38:18 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:38:18 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:156) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:41:20 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:41:20 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:41:20 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:156) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:42:08 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:42:08 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:42:08 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:156) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 12:42:40 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 12:42:41 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 12:42:41 [main] ERROR LogFrameFile:30 - 
+java.io.FileNotFoundException: Source 'file:\E:\mTools\databasecheck\parent\db-autotest-core-0.0.1.jar!\resources\js' does not exist
+	at org.apache.commons.io.FileUtils.checkFileRequirements(FileUtils.java:1405) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1368) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectory(FileUtils.java:1268) ~[db-autotest-core-0.0.1.jar:?]
+	at org.apache.commons.io.FileUtils.copyDirectoryToDirectory(FileUtils.java:1209) ~[db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.strat(AutoTestServer.java:45) [db-autotest-core-0.0.1.jar:?]
+	at io.mycat.db.autotest.server.AutoTestServer.main(AutoTestServer.java:153) [db-autotest-core-0.0.1.jar:?]
+2017-02-13 13:12:25 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 13:12:26 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 13:12:53 [main] DEBUG LogFrameFile:26 - 用例装配完成，连接池初始化完成......
+2017-02-13 13:16:43 [main] DEBUG LogFrameFile:26 - 扫描jar
+2017-02-13 13:16:43 [main] DEBUG LogFrameFile:26 - 解析xml结束
+2017-02-13 13:17:06 [main] DEBUG LogFrameFile:26 - 用例装配完成，连接池初始化完成......

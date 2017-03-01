@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="../../../js/zui/css/zui.min.css">
+
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="../../../js/jquery-3.1.1.min.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="../../../js/zui/js/zui.min.js"></script>
+    <script>
+        /*$(function(){
+            $('table.datatable').datatable();
+        });*/
+    </script>
+</head>
+<body>
+<a href="javascript:window.history.go(-1)">返回</a><br/>
+<% if(checkMsg.stauts) { print('<i class="icon-check"></i>验证通过'); } else { print('<i class="icon-times" ></i>验证失败'); } %><br/>
+是否全匹配（有序匹配）：<% if(verify.verifyOrder) { print('有序匹配'); } else { print('无序匹配'); } %><br/>
+<h2>需要的数据</h2>
+<table class="table datatable">
+    <thead>
+    <%
+    for(verifyCheckData in verifyCheckDatas){
+        if(verifyCheckDataLP.index == 1){
+    %>
+            <tr>
+                <%
+                for(entry in verifyCheckData){
+                    var key = entry.key;
+                    print(' <th>'+key+'</th>');
+                }
+                %>
+            </tr>
+    <%
+        }
+    }
+    %>
+
+    </thead>
+    <tbody>
+    <%
+    for(verifyCheckData in verifyCheckDatas){
+
+    %>
+    <tr>
+        <%
+        for(entry in verifyCheckData){
+            var value = entry.value;
+            print(' <td>'+value+'</td>');
+        }
+        %>
+    </tr>
+    <%
+    }
+    %>
+    </tbody>
+</table>
+<h2>获得的数据</h2>
+<table class="table datatable">
+    <thead>
+    <%
+    for(verifyData in verifyDatas){
+    if(verifyDataLP.index == 1){
+    %>
+    <tr>
+        <%
+        for(entry in verifyData){
+        var key = entry.key;
+        print(' <th>'+key+'</th>');
+        }
+        %>
+    </tr>
+    <%
+    }
+    }
+    %>
+
+    </thead>
+    <tbody>
+    <%
+    for(verifyData in verifyDatas){
+
+    %>
+    <tr>
+        <%
+        for(entry in verifyData){
+            var value = entry.value;
+            print(' <th>'+value+'</th>');
+        }
+        %>
+    </tr>
+    <%
+    }
+    %>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,2 @@
+cd E:\\mTools\\databasecheck\\parent
+git push all --all

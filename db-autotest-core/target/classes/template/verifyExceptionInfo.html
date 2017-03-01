@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="../../../js/zui/css/zui.min.css">
+
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="../../../js/jquery-3.1.1.min.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="../../../js/zui/js/zui.min.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+<a href="javascript:window.history.go(-1)">返回</a><br/>
+<% if(checkMsg.stauts) { print('<i class="icon-check"></i>验证通过'); } else { print('<i class="icon-times" ></i>验证失败'); } %><br/>
+<h2>需要的数据</h2>
+<table class="table datatable">
+    <thead>
+            <tr>
+                <th>类型</th>
+                <th>数据</th>
+            </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>需要的类型</td>
+            <td><% print(eTypeV); %></td>
+        </tr>
+        <tr>
+            <td>需要的错误消息</td>
+            <td><% print(eMsgV); %></td>
+        </tr>
+        <tr>
+            <td>获得的类型</td>
+            <td><% print(eType); %></td>
+        </tr>
+        <tr>
+            <td>获得的错误消息</td>
+            <td><% print(eMsg); %></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

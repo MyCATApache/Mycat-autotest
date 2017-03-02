@@ -12,7 +12,7 @@ import io.mycat.db.autotest.bean.annotation.FieldStep;
 public class Clean extends AutoTestBaseBean  implements TagServerType {
 
 	public Clean() {
-		super(Arrays.asList(),  "clean", null);
+		super(Arrays.asList(),  "clean", Arrays.asList(Sql.class));
 	}
 	
 	@FieldStep(name={"sql","transaction"})

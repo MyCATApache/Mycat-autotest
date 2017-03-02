@@ -9,8 +9,8 @@
 	</afterTestGroup>
 	<!-- <beforeTest>
 	</beforeTest> -->
-	<afterTest >
-		<transaction connection="test" url="./cleanData.sql"><!-- 每个用例结束后 可以配置多个transaction -->
+	<!--<afterTest >
+		<transaction connection="test" url="./cleanData.sql">
 		</transaction>
-	</afterTest>
+	</afterTest>-->
 </testGroup>

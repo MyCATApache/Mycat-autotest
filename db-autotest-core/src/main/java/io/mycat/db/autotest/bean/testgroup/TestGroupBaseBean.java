@@ -274,40 +274,6 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
                 executor.shutdown();
             }
         }
-
-        /*try {
-            for (UseCase useCase : useCases) {
-
-                String id = useCase.getDepend();
-                if(StringUtils.isNotEmpty(id) && !useCaseExecuteComplete.contains(id)){
-                    lazyUseCases.add(useCase);
-                    continue;
-                }
-
-                if (beforeTest != null) {
-                    beforeTest.exec();
-                }
-
-                useCase.exec();
-
-                if (afterTest != null) {
-                    afterTest.exec();
-                }
-                this.useCaseExecuteComplete.add(useCase.getId());
-            }
-
-            if((lazyUseCases.size()) > 0){
-                execlazyUseCases(0,lazyUseCases,afterTest,beforeTest);
-            }
-
-        } finally { // 保证资源清理回收
-            if (afterTestGroup != null) {
-                afterTestGroup.exec();
-            }
-        }*/
-
-
-
         return true;
     }
 

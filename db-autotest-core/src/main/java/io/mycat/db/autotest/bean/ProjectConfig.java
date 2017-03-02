@@ -21,7 +21,7 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 	
 	private Integer checkConcurrency = 100;
 	
-	private Integer performanceConcurrency = 20;
+	//private Integer performanceConcurrency = 20;
 	
 	/**
 	 * 1不单独启动进程进行测试，2启动新的进程进行测试
@@ -86,13 +86,13 @@ public class ProjectConfig extends AutoTestBaseBean implements AutoTestDataSourc
 		this.checkConcurrency = checkConcurrency;
 	}
 
-	public Integer getPerformanceConcurrency() {
+	/*public Integer getPerformanceConcurrency() {
 		return performanceConcurrency;
 	}
 
 	public void setPerformanceConcurrency(Integer performanceConcurrency) {
 		this.performanceConcurrency = performanceConcurrency;
-	}
+	}*/
 
 	public String getQuartz() {
 		return quartz;

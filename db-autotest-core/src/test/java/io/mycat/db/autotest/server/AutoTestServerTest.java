@@ -13,7 +13,7 @@ public class AutoTestServerTest {
     public void strat() throws Exception {
        AutoTestServer ats = new AutoTestServer();
        //ats.strat(AutoTestServerTest.class.getClassLoader().getResource("test").getFile(),"queryExample","e://2",null);
-        ats.strat("F:\\test","queryExample","e://2","0 4/2 * * * ? *",true);
+        ats.strat("F:\\test","queryExample","e://2",null,true);
     }
 
 }

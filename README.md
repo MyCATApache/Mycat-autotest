@@ -14,6 +14,7 @@ autotest [-p/--path][-i/--ids][-o/--outpath][-s/--server] <br/>
 -s/--server 是否已服务模式启动(传入true，使用config.xml 中quartz的定时器配置，也可以传入定时器配置信息) <br/>
 
 ## 用例编写
+*** 现在用例标签大小写必须完全匹配
 ###主配置文件config.xml编写
 1. connection 为数据库链接池配置信息，config.xml中表示全局使用的配置文件
 2. path 为测试用例目录

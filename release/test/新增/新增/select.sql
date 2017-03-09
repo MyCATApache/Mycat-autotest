@@ -1,0 +1,1 @@
+select * from test1 order by cast(test_id as unsigned int);

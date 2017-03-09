@@ -40,7 +40,7 @@ import java.util.concurrent.Executors;
  */
 public class AutoTestServer {
 
-    private static boolean isJar = false;
+    public static boolean isJar = false;
     private static String jarPath = "";
 
     public AutoTestServer() {
@@ -221,6 +221,7 @@ public class AutoTestServer {
             LogFrameFile.getInstance().error("", e);
         }
         for (TestGroupBaseBean testGroupBaseBean : testGroupBaseBeans) {
+            LogFrameFile.getInstance().error("testGroupBaseBean报告开始生成");
             testGroupBaseBean.createHtml();
         }
     }
@@ -263,8 +264,21 @@ public class AutoTestServer {
             zip.unzip(jarPath, folder + "autotest");
             FileUtils.copyDirectoryToDirectory(new File(folder + "autotest/resources/js"), new File(outPathN));
             LogFrameFile.getInstance().debug(folder + "autotest/resources/js === 拷贝完成");
+
+            String url = URLDecoder.decode(System.getProperty("user.dir"),"utf-8");
+            File newFile = new File(url,"template2");
+            newFile.delete();
+            newFile.mkdir();
+            FileUtils.copyDirectoryToDirectory(new File(folder + "autotest/template"), new File(url,"template2"));
         } else {
             FileUtils.copyDirectoryToDirectory(new File(URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("resources/js").getPath(), "utf-8")), new File(outPathN));
+
+
+            URL url = AutoTestServer.class.getClassLoader().getResource("");
+            File newFile = new File(URLDecoder.decode(url.getPath(),"utf-8"),"template2");
+            newFile.delete();
+            newFile.mkdir();
+            FileUtils.copyDirectoryToDirectory(new File(URLDecoder.decode(AutoTestServer.class.getClassLoader().getResource("template").getPath(), "utf-8")),new File(URLDecoder.decode(url.getPath(),"utf-8"),"template2"));
         }
     }
 
@@ -282,7 +296,7 @@ public class AutoTestServer {
         };
     }
 
-    private static boolean createHtml(ProjectConfig projectConfig, Map<String, Object> datas, String path) throws UnsupportedEncodingException {
+    private static boolean createHtml(ProjectConfig projectConfig, Map<String, Object> datas, String path) throws Exception {
         String outPath = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
         String templateid = "index.html";
         BeetlUtils.createpathTemplate(outPath + "/" + path, templateid, datas);

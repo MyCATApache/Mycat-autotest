@@ -35,3 +35,7 @@
 /db-autotest-performance/.project
 /db-autotest-performance/db-autotest-performance.iml
 /log
+/release/mapdbCache.db
+/release/log
+/release/outpath
+/release/template2

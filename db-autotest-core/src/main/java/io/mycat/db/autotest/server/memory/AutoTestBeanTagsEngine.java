@@ -174,7 +174,6 @@ public class AutoTestBeanTagsEngine {
         //解析父标签上的，子标签属性
         List<Class<? extends AutoTestBaseBean>> lc = autoTestBaseBean.getLoadChildFields();
         if (lc != null) {
-            System.out.println(lc);
             for (Class<? extends AutoTestBaseBean> aClass : lc) {
                 AutoTestBaseBean autoTestBaseBeanChild = aClass.newInstance();
                 List<String> lscs = autoTestBaseBeanChild.getFields();

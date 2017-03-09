@@ -1,0 +1,16 @@
+<testGroup>
+	<beforeTestGroup>
+		<transaction connection="test" url="./init.sql"><!-- 本组用例启动前 可以配置多个transaction -->
+		</transaction>
+	</beforeTestGroup>
+	<afterTestGroup>
+		<transaction connection="test" url="./init_clean.sql"><!-- 本组用例全部结束后 可以配置多个transaction -->
+		</transaction>
+	</afterTestGroup>
+	<!-- <beforeTest>
+	</beforeTest> -->
+	<!--<afterTest >
+		<transaction connection="test" url="./cleanData.sql">
+		</transaction>
+	</afterTest>-->
+</testGroup>

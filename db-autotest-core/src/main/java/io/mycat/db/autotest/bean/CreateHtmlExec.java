@@ -8,6 +8,6 @@ import java.util.Map;
  */
 public interface CreateHtmlExec {
 
-    boolean createHtml();
+    boolean createHtml() throws Exception;
 
 }

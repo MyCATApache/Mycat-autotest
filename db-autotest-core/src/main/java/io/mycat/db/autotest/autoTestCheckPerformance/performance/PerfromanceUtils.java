@@ -22,7 +22,7 @@ import java.util.*;
 public class PerfromanceUtils {
 
     // 验证结果并返回验证消息情况
-    public static long check(int count, Performance performance, UseCase useCase, Connection conn, String sqlStr) throws SQLException {
+    public static long check(int count, Performance performance, UseCase useCase, Connection conn, String sqlStr) throws Exception {
 
         long time = 0;
         int length = count;
@@ -46,18 +46,14 @@ public class PerfromanceUtils {
         datas.put("verifyCheckDatas", performance);
         AutoTestBaseBean stb = BeanFactory.getBeanById(useCase.getParentId());
         String path = "groupUseCase/" + stb.getId() + "/" + useCase.getId() + "/" + performance.getId() + ".html";
-        try {
-            datas.put("perfromanceMsg", pm);
-            createHtml(datas, path);
-        } catch (UnsupportedEncodingException e) {
-            LogFrameFile.getInstance().error("", e);
-        }
+        datas.put("perfromanceMsg", pm);
+        createHtml(datas, path);
 
         return time;
     }
 
     //List<Map<String,String>>
-    private static boolean createHtml( Map<String, Object> datas, String path) throws UnsupportedEncodingException {
+    private static boolean createHtml( Map<String, Object> datas, String path) throws Exception {
         ProjectConfig projectConfig = BeanFactory.getProjectConfig();
         String outPath = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
         String templateid = "perfromanceInfo.html";

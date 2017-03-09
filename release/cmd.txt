@@ -1,0 +1,1 @@
+autotest.bat -p E:\mTools\databasecheck\parent\release\test -o ../outpath

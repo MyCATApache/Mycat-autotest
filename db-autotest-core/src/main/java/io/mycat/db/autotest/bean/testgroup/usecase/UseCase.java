@@ -244,7 +244,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
         return true;
     }
 
-    private static boolean createHtml( Map<String, Object> datas, String path) throws UnsupportedEncodingException {
+    private static boolean createHtml( Map<String, Object> datas, String path) throws Exception {
         ProjectConfig projectConfig = BeanFactory.getProjectConfig();
         String outPath = PathUtils.getPath(projectConfig.getPath(),projectConfig.getOutPath());
         String templateid = "useCase.html";
@@ -253,7 +253,7 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
     }
 
     @Override
-    public boolean createHtml() {
+    public boolean createHtml()throws Exception {
         if(!this.isStautsCreateHtml()){
             return true;
         }

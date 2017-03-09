@@ -1,0 +1,25 @@
+<projectConfig>
+	<connections> 
+		<connection id="test" host="192.168.1.5" database="test" post="3306" username="test" password="test" /> <!-- mycat -->
+		<connection> <!-- 当前用例使用的数据库链接，不会覆盖用，如果同名使用本用例配置的链接 -->
+				<id>test1</id>
+				<host>192.168.1.5</host>
+				<post>3306</post>
+				<database>test1</database>
+				<username>test</username>
+				<password>test</password>
+		</connection>
+		<!--<connection > &lt;!&ndash; 当前用例使用的数据库链接，不会覆盖用，如果同名使用本用例配置的链接 &ndash;&gt;
+				<id>test2</id>
+				<host>192.168.31.157</host>
+				<post>3306</post>
+				<database>test2</database>
+				<username>test</username>
+				<password>test</password>
+		</connection>-->
+	</connections>
+	<path>./</path><!-- 测试用例目录 -->
+	<checkConcurrency>10</checkConcurrency><!-- 检查并发数目，只有可以异步的用例才可以，并发执行， 系统的执行过程 先执行所有同步的 在执行异步的用例 -->
+	<outPath>./outpath</outPath>
+	<quartz>0 0 1 * * ?</quartz><!-- 定时器配置 -->
+</projectConfig>

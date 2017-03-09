@@ -163,12 +163,13 @@
 		</dependency>
 
 
-		<!-- https://mvnrepository.com/artifact/org.beetl/beetl-core -->
+		<!-- https://mvnrepository.com/artifact/com.ibeetl/beetl -->
 		<dependency>
 			<groupId>com.ibeetl</groupId>
 			<artifactId>beetl</artifactId>
-			<version>2.7.11</version>
+			<version>2.7.12</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.mapdb/mapdb -->
 		<dependency>

@@ -153,7 +153,7 @@ public class VerifyUtils {
         return true;
     }
 
-    private static void getCheckMsg(Verify verify, UseCase useCase, long time, Map<String, Object> datas, String path, boolean stauts,int type) {
+    private static void getCheckMsg(Verify verify, UseCase useCase, long time, Map<String, Object> datas, String path, boolean stauts,int type) throws Exception{
         CheckMsg cm = new CheckMsg(verify.getId(), verify.getName(), "", path, time, stauts);
         useCase.addCheck(cm);
         try {
@@ -164,7 +164,7 @@ public class VerifyUtils {
         }
     }
 
-    private static boolean createHtml(int type, Map<String, Object> datas, String path) throws UnsupportedEncodingException {
+    private static boolean createHtml(int type, Map<String, Object> datas, String path) throws Exception {
         ProjectConfig projectConfig = BeanFactory.getProjectConfig();
         String outPath = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
         String templateid = "verifyChekcInfo.html";

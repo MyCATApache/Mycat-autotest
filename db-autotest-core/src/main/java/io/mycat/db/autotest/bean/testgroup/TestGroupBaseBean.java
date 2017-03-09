@@ -310,7 +310,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
         return execlazyUseCases(nowLength,lazyUseCases,afterTest,beforeTest);
     }
 
-    private static boolean createHtml(Map<String, Object> datas, String path) throws UnsupportedEncodingException {
+    private static boolean createHtml(Map<String, Object> datas, String path) throws Exception {
         ProjectConfig projectConfig = BeanFactory.getProjectConfig();
         String outPath = PathUtils.getPath(projectConfig.getPath(), projectConfig.getOutPath());
         String templateid = "groupUseCase.html";
@@ -319,7 +319,7 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
     }
 
     @Override
-    public boolean createHtml() {
+    public boolean createHtml()throws Exception {
         String path = "groupUseCase/" + this.getId() + ".html";
         Map<String, Object> datas = new HashMap<>();
 
@@ -337,12 +337,8 @@ public class TestGroupBaseBean extends AutoTestBaseBean implements AutoTestDataS
         }
         datas.put("useCases", cUseCases);
         datas.put("groupUseCase", this);
-        try {
             createHtml(datas, path);
-        } catch (UnsupportedEncodingException e) {
-            LogFrameFile.getInstance().error("", e);
-            return false;
-        }
+
         return flag;
     }
 }

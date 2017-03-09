@@ -1,0 +1,12 @@
+<useCase>
+	<id>queryExample</id>
+	<config defaultDataSource="test" name="queryExample" /><!-- defaultDataSource当前所有需要数据库链接默认数据源 如 verifyConnection 和 connection 属性的  -->
+	<init url="./init.sql" connection="test" /><!-- url sql路径 -->
+	<check><!-- verifySqlSrc 数据库sql位置 verifyOrder 是否需要验证顺序 verifyCheckfile 验证文件位置 verifyDescription错误信息 -->
+		<select verifySqlSrc="./select.sql" verifyConnection="test" verifyOrder="true" verifyCheckfile="./check.xml" verifyDescription="查询错误" />
+	</check>
+	<performance><!-- 性能为独立检查服务，执行多次，显示最高、最低、平均 -->
+		<select url="./select.sql" connection="test" count="10" /><!-- url sql路径 count 测试次数 -->
+	</performance>
+	<clean url="./clean.sql" connection="test"/>
+</useCase>

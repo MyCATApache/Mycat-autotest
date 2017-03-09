@@ -3,6 +3,7 @@ package io.mycat.db.autotest.bean.testgroup.usecase;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.mycat.db.autotest.autoTestCheckPerformance.tagServer.TagServerType;
@@ -39,4 +40,6 @@ public class Select extends AutoTestBaseBean  implements TagServerType {
 		}
 		return true;
 	}
+
+
 }

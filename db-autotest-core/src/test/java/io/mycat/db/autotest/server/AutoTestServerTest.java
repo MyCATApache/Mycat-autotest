@@ -1,5 +1,6 @@
 package io.mycat.db.autotest.server;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +14,7 @@ public class AutoTestServerTest {
     public void strat() throws Exception {
        AutoTestServer ats = new AutoTestServer();
        //ats.strat(AutoTestServerTest.class.getClassLoader().getResource("test").getFile(),"queryExample","e://2",null);
-        ats.strat("F:\\test","queryExample","e://2",null,true);
+        ats.strat(AutoTestServerTest.class.getClassLoader().getResource("test").getFile(),null,"e://2",null,true);
     }
 
 }

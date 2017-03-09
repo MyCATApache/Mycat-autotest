@@ -273,7 +273,9 @@ public class AutoTestServer {
             try {
                 testGroupBaseBean.initDataSource();
                 testGroupBaseBean.exec();
-            } finally {
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally{
                 testGroupBaseBean.close();
             }
             return testGroupBaseBean.getId();

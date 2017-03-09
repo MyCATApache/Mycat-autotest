@@ -114,8 +114,5 @@ public class Connection extends AutoTestBaseBean {
 		this.database = database;
 	}
 
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
+
 }

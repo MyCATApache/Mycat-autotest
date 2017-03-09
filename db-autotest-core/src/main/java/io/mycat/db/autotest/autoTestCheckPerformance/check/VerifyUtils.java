@@ -107,10 +107,10 @@ public class VerifyUtils {
 
             if (verify.isVerifyOrder()) {
                 //  HashMap
-                if (equals(verifyCheckDatas,verifyDatas)) {
-                    getCheckMsg(verify, useCase, time, datas, path, true,1);
-                    return true;
-                }
+                    if (equals(verifyCheckDatas,verifyDatas)) {
+                        getCheckMsg(verify, useCase, time, datas, path, true,1);
+                        return true;
+                    }
             } else {
                 List<Map<String, String>> verifyCheckDatasTemp = BeanUtils.cloneTo(verifyCheckDatas);
                 List<Map<String, String>> verifyDatasTemp = BeanUtils.cloneTo(verifyDatas);
@@ -130,6 +130,9 @@ public class VerifyUtils {
 
     private static boolean equals(List<Map<String, String>> verifyCheckDatas, List<Map<String, String>> verifyDatas){
         if(verifyCheckDatas == null || verifyDatas == null){
+            return false;
+        }
+        if(verifyCheckDatas.size() != verifyDatas.size()){
             return false;
         }
         for (int i = 0; i < verifyCheckDatas.size(); i++) {

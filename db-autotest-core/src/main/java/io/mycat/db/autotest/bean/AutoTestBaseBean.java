@@ -1,6 +1,7 @@
 package io.mycat.db.autotest.bean;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class AutoTestBaseBean implements Serializable {
@@ -94,5 +95,7 @@ public abstract class AutoTestBaseBean implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 
 }

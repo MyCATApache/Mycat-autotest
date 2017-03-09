@@ -30,6 +30,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 	private int count = 10;
 
 	private String content;
+
 	
 	public Sql() {
 		super(Arrays.asList("url","connection","count","content"),  "sql", null);
@@ -90,7 +91,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 
 	private AutoTestBaseBean getPerformanceOrTransactionOrInit(AutoTestBaseBean autoTestBaseBean){
 
-		if(autoTestBaseBean instanceof Performance || autoTestBaseBean instanceof Transaction || autoTestBaseBean instanceof Init){
+		if(autoTestBaseBean instanceof Performance || autoTestBaseBean instanceof Transaction || autoTestBaseBean instanceof Init || autoTestBaseBean instanceof Clean || autoTestBaseBean instanceof Check){
 			return autoTestBaseBean;
 		}else{
 			return getPerformanceOrTransactionOrInit(BeanFactory.getBeanById(autoTestBaseBean.getParentId()));
@@ -111,7 +112,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 
 
 			List<String> sqls = null;
-			if(content != null){
+			if(content != null ){
 				sqls = FileSqlUtils.getSqls(content);
 			}else{
 				sqls = FileSqlUtils.getSqls(new File(PathUtils.getPath(testGroupBaseBean.getPath(),sql.getUrl())));
@@ -133,7 +134,7 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 		}
 		UseCase useCase = (UseCase)autoTestBaseBean;
 		Connection conn = null;
-		if(atbb instanceof Init){
+		if(atbb instanceof Init || atbb instanceof Clean ){
 			try {
 				conn = sql.getConn(useCase);
 				List<String> sqls = null;
@@ -172,6 +173,12 @@ public class Sql extends AutoTestBaseBean implements TagServerType {
 					}else if(atbb instanceof Transaction){
 						long start = System.currentTimeMillis();
 						DataBaseUtils.execSqlOpenTransaction(conn,s,((Transaction)atbb).isAutoCommit());
+						long end = System.currentTimeMillis();
+						time = time + end - start;
+					}
+					else if(atbb instanceof Check){
+						long start = System.currentTimeMillis();
+						DataBaseUtils.execSqlOpenTransaction(conn,s,true);
 						long end = System.currentTimeMillis();
 						time = time + end - start;
 					}

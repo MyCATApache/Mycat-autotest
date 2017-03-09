@@ -20,7 +20,6 @@
 	</connections>
 	<path>./</path><!-- 测试用例目录 -->
 	<checkConcurrency>10</checkConcurrency><!-- 检查并发数目，只有可以异步的用例才可以，并发执行， 系统的执行过程 先执行所有同步的 在执行异步的用例 -->
-	<performanceConcurrency>10</performanceConcurrency><!-- 性能测试用例并发数目 -->
 	<outPath>./outpath</outPath>
-	<quartz>0 0 1 * * ?</quartz><!-- 测试用例目录 -->
+	<quartz>0 0 1 * * ?</quartz><!-- 定时器配置 -->
 </projectConfig>

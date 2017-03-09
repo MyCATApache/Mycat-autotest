@@ -25,7 +25,7 @@ public class BeanFactory {
 	/**
 	 * 用例组，缓存
 	 */
-	private static final Set<TestGroupBaseBean> groupBases = new java.util.concurrent.ConcurrentSkipListSet<>();
+	private static final List<TestGroupBaseBean> groupBases = new ArrayList<>();
 
 	private static ProjectConfig projectConfig;
 
@@ -49,7 +49,7 @@ public class BeanFactory {
 		return beans;
 	}
 
-	public static Set<TestGroupBaseBean> getGroupBases() {
+	public static List<TestGroupBaseBean> getGroupBases() {
 		return groupBases;
 	}
 

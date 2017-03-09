@@ -163,6 +163,10 @@ public class UseCase extends AutoTestBaseBean implements AutoTestDataSource, Tag
     @Override
     public java.sql.Connection getConnection(String name) throws SQLException {
 
+        if(name == null){
+            name = config.getDefualutConnection();
+        }
+
         if(connections != null){
             for (io.mycat.db.autotest.bean.Connection conn : connections) {
                 if (name.equals(conn.getId())) {

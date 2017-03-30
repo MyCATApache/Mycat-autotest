@@ -18,8 +18,9 @@ public class DataBaseUtils {
     }
 
     public static boolean execSql(Connection conn,String sql) throws SQLException {
-        PreparedStatement stat = conn.prepareStatement(sql);
-        return stat.execute();
+        try( PreparedStatement stat = conn.prepareStatement(sql)){
+            return stat.execute();
+        }
     }
 
    /* public static boolean rollback(Connection conn){

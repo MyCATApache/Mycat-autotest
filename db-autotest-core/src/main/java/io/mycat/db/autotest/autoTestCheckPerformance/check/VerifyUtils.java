@@ -67,8 +67,10 @@ public class VerifyUtils {
                 case "excel":// 以excel 模式获取比较数据
                     ExcelReaderUtils excelReader = new ExcelReaderUtils();
                     verifyCheckDatas = excelReader.readExcelContent(new File(PathUtils.getPath(useCase.doPath(), verify.getVerifyCheckfile())));
+                    break;
                 case "xml":// 以xml 模式获取比较数据
                     verifyCheckDatas = XmlUtils.readXmlContent(new File(PathUtils.getPath(useCase.doPath(), verify.getVerifyCheckfile())));
+                    break;
             }
 
             DBHelper dbHelper = null;
@@ -107,7 +109,7 @@ public class VerifyUtils {
 
             if (verify.isVerifyOrder()) {
                 //  HashMap
-                    if (equals(verifyCheckDatas,verifyDatas)) {
+                    if (equalsMap(verifyCheckDatas,verifyDatas)) {
                         getCheckMsg(verify, useCase, time, datas, path, true,1);
                         return true;
                     }
@@ -116,7 +118,7 @@ public class VerifyUtils {
                 List<Map<String, String>> verifyDatasTemp = BeanUtils.cloneTo(verifyDatas);
                 Collections.sort(verifyCheckDatasTemp, new MapComparator());
                 Collections.sort(verifyDatasTemp, new MapComparator());
-                if (equals(verifyCheckDatasTemp,verifyDatasTemp)) {
+                if (equalsMap(verifyCheckDatasTemp,verifyDatasTemp)) {
                     getCheckMsg(verify, useCase, time, datas, path, true,1);
                     return true;
                 }
@@ -128,7 +130,7 @@ public class VerifyUtils {
         }
     }
 
-    private static boolean equals(List<Map<String, String>> verifyCheckDatas, List<Map<String, String>> verifyDatas){
+    private static boolean equalsMap(List<Map<String, String>> verifyCheckDatas, List<Map<String, String>> verifyDatas){
         if(verifyCheckDatas == null || verifyDatas == null){
             return false;
         }
@@ -178,9 +180,9 @@ public class VerifyUtils {
     static class MapComparator implements Comparator<Map<String, String>> {
         @Override
         public int compare(Map<String, String> o1, Map<String, String> o2) {
-            for (String s : o1.keySet()) {
-                if (o1.get(s).compareTo(o2.get(s)) != 0) {
-                    return o1.get(s).compareTo(o2.get(s));
+            for (Map.Entry<String, String> s : o1.entrySet()) {
+                if (s .getValue().compareTo(o2.get(s.getKey())) != 0) {
+                    return s .getValue().compareTo(o2.get(s.getKey()));
                 }
             }
             return 0;

@@ -72,7 +72,7 @@ public class ExcelReaderUtils {
                 wb.close();
             }
             if(is != null){
-                wb.close();
+                is.close();
             }
         }
 
@@ -111,10 +111,9 @@ public class ExcelReaderUtils {
                 strCell = "";
                 break;
         }
-        if (strCell.equals("") || strCell == null) {
+        if (strCell == null || strCell.equals("")) {
             return "";
-        }
-        if (cell == null) {
+        }else if (cell == null) {
             return "";
         }
         return strCell;
